@@ -1,0 +1,333 @@
+﻿
+@model WLCaxtonMvcWebPortal.ViewModel.DocumentViewModel
+@using WLCaxtonMvcWebPortal.ViewModel;
+@{
+    ViewBag.Title = "Document List";
+    var data = ViewBag.HtmlOutput;
+}
+@{
+    var dateT = Convert.ToString(DateTime.Now.Ticks);
+   
+    @Scripts.Render(Url.Content("~/Scripts/Areajs/UserActvity.js?" + dateT))
+
+}
+
+
+<style type="text/css" media="screen, projection, print">
+    @@media print {
+
+        .no-print {
+            display: none !important;
+        }
+
+        body {
+            background-color: lightblue;
+        }
+
+        span#dvpdf {
+            display: none !important;
+        }
+
+        a[href]:after {
+            content: none !important;
+        }
+    }
+
+    @@media screen and (-webkit-min-device-pixel-ratio:0) {
+        a[href]:after {
+            content: none !important;
+        }
+    }
+</style>
+
+<style>
+    .disabled {
+        pointer-events: none; /*This makes it not clickable*/
+        opacity: 0.6; /*This grays it out to look disabled*/
+    }
+
+    tr.group,
+    tr.group:hover {
+        background-color: #ddd !important;
+    }
+
+    tr.sub {
+        display: none;
+    }
+
+    .CX {
+        width: 35px;
+    }
+
+        .CX span {
+            font-family: fantasy;
+            font-size: 15px;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            text-align: center;
+        }
+</style>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('select').addClass('selectpicker');
+        $('select').removeClass('nice-select form-control input-sm');
+        $('.dataTables_filter').show();
+    });
+</script>
+
+<!-- Header Html End -->
+<!-- Tab panes -->
+<div class="middle-part__tab">
+    <h2 class="middle-part__tab--head-with-icon">Search Form</h2>
+    <hr class="middle-part__tab--devider">
+    <!-- Simple Form Html Start -->
+    @if (Model.MasterdocList != null)
+    {
+
+        if (Model.MasterdocList != null && Model.MasterdocList.Count > 0)
+        {
+           
+            
+                <div style="color: #ff0000; font-size: 0.9em; padding:10px 0px 0px 18px; text-align:center">
+                  @Convert.ToString(ViewBag.maxSearchLimit)
+                </div>
+            
+
+            <section class="simple-form">
+
+                <div class="simple-form__form-group row">
+                    <div class="col-sm-6 col-md-4">
+                        <label class="simple-form__form-group--label">Row Grouping By Column Name :<span>*</span> </label>
+                        <select id="ddlColm" onchange="fn_colGroupDataTable();">
+                            <option value="-1">-- Select --</option>
+                            @*<option value="0" class="disabled">View All PDF</option>
+                            <option value="1" class="disabled">Show Details</option>
+                            <option value="2" class="disabled">Show File</option>*@
+                            <option value="3">Date</option>
+                            <option value="4">Policy No</option>
+                            <option value="5">DocTypes </option>
+                            <option value="6">Zip Code</option>
+                            <option value="7">Page Count</option>
+                            <option value="8">Spool Name</option>
+                            <option value="9">Stream Code</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="print-container col-sm-6 col-md-8">
+                        <ul>
+                            <li>
+                                @*<a href="#" class="print01"></a>*@
+                                <span onclick="GenerateReport();">
+                                    <img src='@Url.Content("~/Images/database_export.png")' title='Export Search Result' />
+                                </span>
+                            </li>
+                            <li>
+                                @*<a href="#" class="print02"></a>*@
+                                <span onclick="printDiv('divAllPrint-dvOnlyPrint');">
+                                    <img src='@Url.Content("~/Images/printer.png")' title='Print Current Search Result' />
+                                </span>
+                            </li>
+                            <li>
+                                @*<a href="#" class="print03"></a>*@
+                                <span onclick="pritsAll();">
+                                    <img src='@Url.Content("~/Images/PrintAll.png")' title='Print Full Search Result' />
+                                </span>
+                            </li>
+                            <li>
+                                @*<span onclick="fn_ShowConfigureSearch();">*@
+                                <span onclick="colvisibility();">
+                                    <img src='@Url.Content("~/Images/configure-list3.jpg")' title='Go to Configure Search List' />
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="simple-form__form-group row">
+                    <div class="col-md-12">
+                        <div id="divAllPrint" class="dataTables_wrapper divInb">
+
+                            <table id="tblMasterdocList" class="tblMasterdocList">
+                                <thead>
+                                    <tr>
+                                        <th class="no-print sorting_disabled">
+                                            View PDF Details
+                                        </th>
+                                        <th class="no-print">
+                                            Show Details
+                                        </th>
+                                        <th class="no-print">
+                                            Show File
+                                        </th>
+
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Policy No
+                                        </th>
+                                        <th>
+                                            DocTypes
+                                        </th>
+                                        <th >
+                                            Zip Code
+                                        </th>
+                                        <th >
+                                            Page Count
+                                        </th>
+                                        <th>
+                                            Spool Name
+                                        </th>
+                                        <th>
+                                            Stream Code
+                                        </th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @for (Int32 i = 0; i <= Model.MasterdocList.Count - 1; i++)
+                                    {
+                                        <tr>
+                                            <td class="no-print">
+                                                <span id="dvView" class="dvView" data-toggle="modal" data-target="#myModal1" title='Show Document Details' style="color: Blue; font-style: italic; cursor: pointer;" data-DocguId="@Model.MasterdocList[i].DocumentGUID" data-cnt="@Model.MasterdocList[i].PageCountHidden"
+                                                      onclick="javascript: fn_ShowDocumentDetails(this,2)">
+
+                                                    @if (Model.MasterdocList[i].SubDocumentStartPage > -1)
+                                                    {
+                                                        <img id="imgPlus" class="no-print" src='@Url.Content("~/Images/toggle-plus.png")' title='Show Details' />
+                                                    }
+
+                                                </span>
+                                            </td>
+                                            <td class="no-print">
+                                                <span id="dvView" class="dvView" data-toggle="modal" data-target="#myModal1" title='Show Document Details' style="color: Blue; font-style: italic; cursor: pointer;" data-DocguId="@Model.MasterdocList[i].DocumentGUID" data-cnt="@Model.MasterdocList[i].PageCountHidden"
+                                                      onclick="javascript: fn_ShowDocumentDetails(this,1)">
+                                                    <img src='@Url.Content("~/Images/viewB.png")' class="no-print" title='Show Document Details' />
+                                                </span>
+                                            </td>
+                                            <td class="no-print">
+                                                <span id="dvpdf" class="dvpdf" title='Show PDF' style="cursor: pointer;"
+                                                      data-DocguId="@Model.MasterdocList[i].DocumentGUID"
+                                                      data-cnt="@Model.MasterdocList[i].PageCountHidden"
+                                                      onclick="javascript: fn_GetpdfDocument(this)">
+                                                    @*data-spn="@Model.BucketDetailsList[0].BucketName"*@
+                                                    @*https://s3.amazonaws.com/@Model.BucketDetailsList[0].fileURL*@
+                                                    @* <a href="https://dev-rsa.wlt.hcpnp.global.wlt.com/rest/@Model.MasterdocList[i].pageURL" target="_blank"><img src='@Url.Content("~/Images/file-pdf.png")' class="no-print" title='Show PDF' /></a>*@
+                                                    <a><img src='@Url.Content("~/Images/file-pdf.png")' class="no-print" title='Show PDF' /></a>
+                                                </span>
+                                            </td>
+
+                                            <td date-order="@String.Format("{0:yyyy-mm-dd}",Model.MasterdocList[i].DocumentDate)">
+                                                @String.Format("{0:ddd, dd MM yyyy}", Model.MasterdocList[i].DocumentDate)
+                                                @*@Html.DisplayFor(m => m.MasterdocList[i].DocumentDate)*@
+                                            </td>
+                                            <td >
+                                                @Html.DisplayFor(m => m.MasterdocList[i].AccountNumber)
+                                            </td>
+                                            <td >
+                                                @Html.DisplayFor(m => m.MasterdocList[i].DocumentType)
+                                            </td>
+                                            <td >
+                                                @Html.DisplayFor(m => m.MasterdocList[i].Postcode)
+                                            </td>
+                                            <td >
+                                                @Html.DisplayFor(m => m.MasterdocList[i].PageCount)
+                                            </td>
+                                            <td >
+                                                @Html.DisplayFor(m => m.MasterdocList[i].SpoolName)
+                                            </td>
+                                            <td >
+                                                @Html.DisplayFor(m => m.MasterdocList[i].StreamName)
+                                            </td>
+
+
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+
+
+                            <div class="clear">
+                                &nbsp;
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </section>
+            <!-- Simple Form Html End -->
+        }
+        else
+        {
+            <div style="color: #ff0000; padding: 2em 0 0 0em; font-size: 2em; text-align:center">
+                No documents match with your search criteria.
+            </div>
+        }
+
+    }
+    else
+    {
+        <div style="color: #ff0000; padding: 2em 0 0 0em; font-size: 2em; text-align:center">
+            No documents match with your search criteria.
+        </div>
+    }
+
+
+
+</div>
+
+
+
+
+<section class="model-popup-section">
+
+    <div class="modal fade bs-example-modal-lg" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Simple Form Html Start -->
+                    <div id="dvDocumentDetails">
+                        @*@Html.Partial("_DocumentDetails")*@
+                    </div>
+                    <!-- Simple Form Html End -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="default-btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*//-------------------------------------------End Dispute Pop Detail----------------------------------------------------------//*@
+
+
+
+<script type="text/javascript">
+
+    // $(window).on("load", function () {
+    $(document).ready(function () {
+        setInterval(niceSelect, 1000);
+        function niceSelect() {
+            // Executes when complete page is fully loaded, including
+            // all frames, objects and images
+            $('.nice-select').find('ul').find('li:eq(1)').addClass('disabled');
+            $('.nice-select').find('ul').find('li:eq(2)').addClass('disabled');
+            $('.nice-select').find('ul').find('li:eq(3)').addClass('disabled');
+        }
+    });
+</script>

@@ -1,0 +1,47 @@
+.faq-section {
+	.panel-group {
+		@include space(padding, top, $medium);
+		@include space(padding, bottom, $medium);
+		min-height: calc(100% - 13.6875rem);
+		@include space(padding, left, $rem-pad);
+		@include space(padding, right, $rem-pad);
+
+		.panel-default {
+			@include border('top', 0px);
+			@include border('left', 0px);
+			@include border('right', 0px);
+			@include border('bottom', 0px);
+			.panel-heading {
+				@include space(padding, all, 0);
+				background-color: $dull-gray;
+				h4 {
+					a {
+						display: block;
+						text-decoration: none;
+						font-family: $global-font-semibold;
+						color: $nav-color;
+						@include space(padding, all, $input-padding);
+						@include background('../images/sprite.png', 100.5% 100.7%);
+						@include font-size(16);
+						@include line-height(23);
+
+						&.collapsed {
+							@include background('../images/sprite.png', 100.5% 90%);
+						}
+					}
+				}
+			}
+			.panel-body {
+				@include border('left', 1px, solid, $dull-gray);
+				@include border('right', 1px, solid, $dull-gray);
+				@include border('bottom', 1px, solid, $dull-gray);
+				@include border('top', 0px);
+
+				p {
+					@include font-size(15);
+					@include line-height(23);
+				}
+			}
+		}
+	}
+}

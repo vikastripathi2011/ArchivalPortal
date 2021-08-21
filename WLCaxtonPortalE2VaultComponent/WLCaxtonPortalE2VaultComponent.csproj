@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C52B770D-6FC0-4DE2-87EE-EB3840B7408D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WLCaxtonPortalE2VaultComponent</RootNamespace>
+    <AssemblyName>WLCaxtonPortalE2VaultComponent</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="e2NetRender, Version=6.1.0.12, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\e2NetRender.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="E2VaultWrapper.cs" />
+    <Compile Include="RenderClient2.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WLCaxtonPortalBusinessEntity\WLCaxtonPortalBusinessEntity.csproj">
+      <Project>{FBA5E96A-879F-4EF8-AEB9-EB7CE04286CA}</Project>
+      <Name>WLCaxtonPortalBusinessEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WLCaxtonPortalDataLayer\WLCaxtonProtalDataLayer.csproj">
+      <Project>{FCB90A5F-EFF6-421B-BB8D-FE91D417E266}</Project>
+      <Name>WLCaxtonProtalDataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WLCaxtonPortalExceptionLogger\WLCaxtonPortalExceptionLogger.csproj">
+      <Project>{DA692FCD-D88E-462F-8553-51D387BF6DE7}</Project>
+      <Name>WLCaxtonPortalExceptionLogger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\e2NetRender.dll" />
+    <Content Include="bin\Debug\log4net.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.Interception.dll" />
+    <Content Include="bin\Debug\WLCaxtonPortalBusinessEntity.dll" />
+    <Content Include="bin\Debug\WLCaxtonPortalBusinessEntity.pdb" />
+    <Content Include="bin\Debug\WLCaxtonPortalDataHelper.dll" />
+    <Content Include="bin\Debug\WLCaxtonPortalDataHelper.pdb" />
+    <Content Include="bin\Debug\WLCaxtonPortalDataLayer.dll" />
+    <Content Include="bin\Debug\WLCaxtonPortalDataLayer.pdb" />
+    <Content Include="bin\Debug\WLCaxtonPortalE2VaultComponent.dll" />
+    <Content Include="bin\Debug\WLCaxtonPortalE2VaultComponent.pdb" />
+    <Content Include="bin\Debug\WLCaxtonPortalExceptionLogger.dll" />
+    <Content Include="bin\Debug\WLCaxtonPortalExceptionLogger.pdb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

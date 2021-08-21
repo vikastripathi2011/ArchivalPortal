@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    string ErrorCode = ViewBag.ErrorCode;
+    var chk = ViewBag.ChkUser;
+
+    string[] MessageKey = { "AuthenticationHeaderMessage", "AuthorizedMessage" };
+}
+
+
+
+@if (ViewBag.ChkUser != "")//clsSession.FirstName != "")
+{
+    <div class="middle-part__tab">
+        <div class="home-section">
+            <div class="home-section__item">
+                <h2>Welcome to Archive Portal</h2>
+               @*<p>Welcome to Williams Lea - Archive Portal.</p>*@
+                @*<p>You're logged in as @ViewBag.ChkUser</p>*@
+            </div>
+        </div>
+    </div>
+}
+

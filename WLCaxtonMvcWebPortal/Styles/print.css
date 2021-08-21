@@ -1,0 +1,10 @@
+body {margin:0; padding:0; word-spacing:1px; letter-spacing:0.2px; font: 13px Arial, Helvetica,"Lucida Grande", serif; color: #000;}
+
+.no-print{display:none;}
+
+a.print{display:none;}
+
+
+.RadGrid_Default{}
+.searchGrid table th{background:#c2c2c2;}
+.searchGrid table td{line-height:13px;}

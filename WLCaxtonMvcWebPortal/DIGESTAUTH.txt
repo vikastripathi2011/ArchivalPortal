@@ -1,0 +1,2 @@
+UserName=admin_nkhanna
+UserPwd=Welcome@123

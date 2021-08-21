@@ -1,0 +1,6 @@
+footer {
+	background: $heading-blue;
+	color: $white;
+	@include space(padding, all, $rem2-pad);
+	text-align: center;
+}

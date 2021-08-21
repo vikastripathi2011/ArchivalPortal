@@ -1,0 +1,21 @@
+.middle-part {
+	&__simple-nav {
+		.panel-group {
+			.panel-default {
+				.panel-heading {
+					a {
+						@include background(none);
+						background-color: $dull-gray;
+						@include font-size(14);
+						@include line-height(18);
+
+						&:hover, &:focus, &.active {
+							background-color: $even-row;
+						}
+
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,195 @@
+﻿@model IEnumerable<WLCaxtonPortalBusinessEntity.User>
+@Scripts.Render(Url.Content("~/Scripts/Areajs/UserMaintenance.js"))
+
+<style>
+    .anchorCursor:hover {
+        color: #0a813c;
+        font-style: italic;
+        /*color: #4aaedc;*/
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+<script type="text/javascript">
+
+    $(document).ready(function (){
+        $('select').addClass('selectpicker');
+
+        $('select').removeClass('nice-select form-control input-sm');
+        $('.dataTables_filter').show();
+        menuActive("User Maintenance", "User Listing");
+    });
+</script>
+
+<section class="model-popup-section">
+
+    <div class="modal fade " id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Simple Form Html Start -->
+                    <section class="simple-form">
+                        <div id="dvUserDetails">
+                            @*@Html.Partial("_DocumentDetails")*@
+                        </div>
+
+                    </section>
+                    <!-- Simple Form Html End -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="default-btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@*//-------------------------------------------End Pop Detail----------------------------------------------------------//*@
+
+
+
+<!-- Header Html End -->
+<!-- Tab panes -->
+<div class="middle-part__tab ">
+    <section class="forgot-password active-part-list">
+        <div class="container">
+
+            <h2>User List</h2>
+            <div class="active-part">
+                <ul>
+                    <li>
+                        <p>@ViewBag.MessageForActiveSuperUser   </p>
+                    </li>
+                    <li>
+                        <p> @ViewBag.MessageForTentantUser </p>
+                    </li>
+                    <li>
+                        <p>  @ViewBag.MessageForActiveUser </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Simple Form Html Start -->
+    <section class="simple-form">
+        <section id="sectionSuccess" class="notification-section">
+            <div class="alert alert-success alert-dismissible" role="alert" style="display:none">
+                <button type="button" class="close valid"><span aria-hidden="true">&times;</span></button>
+                <p></p>
+            </div>
+        </section>
+        <section id="sectionInfo" class="notification-section">
+            <div class="alert alert-warning alert-dismissible" role="alert" style="display:none">
+                <button type="button" class="close infoValid"><span aria-hidden="true">&times;</span></button>
+                <p></p>
+            </div>
+        </section>
+        <section id="sectionError" class="notification-section">
+            <div class="alert alert-danger alert-dismissible" role="alert" style="display:none">
+                <button type="button" class="close unvalid"><span aria-hidden="true">&times;</span></button>
+                <p></p>
+            </div>
+        </section>
+
+        <!-- Simple Form Html Start -->
+        @if (Model != null)
+        {
+            <table id="tblUser" class="tblUser">
+                <thead>
+                    <tr>
+                        <th>
+                            User Email Id
+                        </th>
+                        <th>
+                            User Name
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <th>
+                            User Status
+                        </th>
+                        <th>Status</th>
+                        <th>
+                            Unlock Account
+                        </th>
+                        <th>
+                            Reset Password
+                        </th>
+                        <th>Edit User</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserEmailId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName) &nbsp; @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RoleDetails.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StatusName)
+                            </td>
+                            <td>
+
+                                @if (@item.StatusId == (int)WLCaxtonPortalBusinessEntity.Status.Active)
+                                {
+                                    <a class="anchorCursor" onclick="javascript: fn_UserChangeStatus(@item.UserId,@item.StatusId )">
+                                        Set Inactive
+                                    </a>
+                                }
+                                @if (@item.StatusId == (int)WLCaxtonPortalBusinessEntity.Status.InActive)
+                                {
+                                    <a class="anchorCursor" onclick="javascript: fn_UserChangeStatus(@item.UserId,@item.StatusId )">
+                                        Set Active
+                                    </a>
+                                }
+                            </td>
+                            <td>
+                                @if (item.StatusId == (int)WLCaxtonPortalBusinessEntity.Status.Locked)
+                                {
+                                    <a class="anchorCursor" onclick="javascript: fn_UserUnlockAcc(@item.UserId)">
+                                        Unlock Account
+                                    </a>
+                                }
+                            </td>
+                            <td>
+                                <button type="button" onclick="javascript: fn_ResetPassword(@item.UserId,'@item.UserEmailId')" class="simple-form__tooltip-btn simple-form__tooltip-btn--reset" data-toggle="tooltip" data-placement="top" title="Reset Password">Reset Password</button>
+                            </td>
+                            <td>
+                                <div class="tooltip-caxton">
+                                    <button type="button" onclick="javascript: fn_ViewUserRegistration(@item.UserId)" class="simple-form__tooltip-btn simple-form__tooltip-btn--edit" data-toggle="modal" data-target="#myModal1" data-placement="top">Edit</button>
+                                    <div class="tooltiptext tooltip-edit">
+                                        Edit
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+            @*</div>*@
+        }
+        else
+        {
+            <div style="color: #ff0000; padding: 7em 0 0 22em; font-size: 2em;">
+                Sorry record not found.
+            </div>
+        }
+    </section>
+    <!-- Simple Form Html End -->
+
+</div>
+
+

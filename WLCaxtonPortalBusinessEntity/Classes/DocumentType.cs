@@ -1,0 +1,33 @@
+﻿//==========================================================================================
+// Project              : WLCaxtonWebPortal
+// File Name            : DocumentType.cs
+// Program Description  : This class works as Business Entity for DocumentType.
+// Programmed By        : Nadeem Ishrat
+// Programmed On        : 26-December-2012 
+// Version              : 1.0.0
+//==========================================================================================
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Runtime.Serialization;
+
+namespace WLCaxtonPortalBusinessEntity
+{
+    /// <summary>
+    /// This class works as Business Entity for DocumentType.
+    /// </summary>
+    [DataContract]
+    [Serializable]
+    public class DocumentType : RecordIdNameDescription
+    {
+        [DataMember]
+        public int DocumentTypeId { get; set; }
+
+        [DataMember]
+        public string DocumentTypeName { get; set; }
+
+        [DataMember]
+        public string DocumentTypeDescription { get; set; }
+    }
+}

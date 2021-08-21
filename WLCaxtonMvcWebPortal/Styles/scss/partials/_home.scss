@@ -1,0 +1,77 @@
+.home-section {
+
+	height: calc(100%);
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 500px;
+
+	&__item {
+		@include space(padding, top, $small);
+		@include space(padding, bottom, $small);
+		@include space(padding, left, $rem-pad);
+		@include space(padding, right, $rem-pad);
+		text-align: center;
+
+		@media (max-width: $mobile-width) {
+			margin: 0 auto;
+		}
+
+		img {
+			display: block;
+			max-width: $x2-width;
+			margin: 0 auto;
+			@include space(margin, bottom, $small);
+			@include space(margin, top, $extraLarge);
+		}
+
+		strong {
+			@include font-size(82);
+	    	@include line-height(90);
+	    	color: $blue;
+	    	font-weight: bold;
+		}
+
+		h1 {
+			@include font-size(42);
+			text-transform: uppercase;
+			@include line-height(48);
+			font-weight: bold;
+		    text-align: center;
+
+		    @media (max-width: $mobile-width) {
+		    	@include font-size(30);
+		    	@include line-height(36);
+		    }
+		}
+
+		p {
+			text-transform: none;
+			font-family: $global-font;
+		    text-align: center;
+		    @include space(padding, all, 0);
+		    @include font-size(20);
+		    @include line-height(26);
+
+		    @media (max-width: $mobile-width) {
+		    	@include font-size(16);
+		    	@include line-height(24);
+		    }
+		}
+
+		.default-btn {
+			@include space(margin, top, $small);
+		}
+	}
+}
+
+.home-section-tab {
+	height: calc(100%);
+	background-image: url("../images/paper_clip.png");
+	background-repeat: no-repeat;
+	background-position: center;
+
+	@media (max-width: $mobile-width) {
+		background-size: cover;
+	}
+}

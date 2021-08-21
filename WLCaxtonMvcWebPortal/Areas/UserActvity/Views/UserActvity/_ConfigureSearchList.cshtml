@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WLCaxtonPortalBusinessEntity.Classes.SearchConfigAttribute>
+<!-- Header Html End -->
+
+<section class="middle-part">
+    <div class="container">
+        
+        <!-- Tab panes -->
+        <div class="middle-part__tab">
+            <h2 class="middle-part__tab--head-with-icon">Search Form</h2>
+            <hr class="middle-part__tab--devider">
+            <!-- Simple Form Html Start -->
+            <section class="simple-form">
+            
+                <table cellpadding="0" cellspacing="0" border="0" id="tblConfigureList">
+                    <thead>
+                        <tr>
+                            <th width="40%">
+                                Column
+                            </th>
+                            <th width="15%">
+                                Visibility
+                            </th>
+                            <th width="30%">
+                                Position
+                            </th>
+                            <th width="15%">
+                                Grouping
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="padding-left:25px;padding-right:70px">
+                                    @item.ParameterName
+                                    @Html.HiddenFor(model => item.ParameterId)
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="chkVisibility" name="chkVisibility" class="chk" checked="@item.IsVisible" />
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(model => item.DisplayOrder, new SelectList((System.Collections.IEnumerable)ViewBag.DisplayOrder, "Text", "Value"), "--Select Order--", new { @class = "form-control" })
+                                    @Html.HiddenFor(model => item.DisplayOrder)
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="chkGrouping" name="chkGrouping" class="chkGroup" checked="@item.IsGroupBy" />
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </section>
+            <!-- Simple Form Html End -->
+            <div>
+                <input type="submit" id="btnSubmit" value="Save" onclick="validateConfigureSearch();" />
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

@@ -1,0 +1,87 @@
+// fonts variable
+$global-font : montserratregular;
+$global-font-black : montserratblack;
+$global-font-bold : montserratbold;
+$global-font-extrabold : montserratextrabold;
+$global-font-extralight : montserratextralight;
+$global-font-light : montserratlight;
+$global-font-medium : montserratmedium;
+$global-font-semibold : montserratsemibold;
+$global-font-thin : montserratthin;
+
+
+//Colors variables
+$black : #000000;
+$white : #ffffff;
+$dark-white: #fefefe;
+$dropdown-border: #efefef;
+$lightblue : rgba(61, 151, 203, 0.45);
+$dull-gray : #f8f8f8;
+$lightGray: #c8c8cb;
+$loginHeading : #66d7fd;
+$blue: #256396;
+$extraLightGray: #e9f0f4;
+$extraLightBlue : #94b4c1;
+$darkBlue : #0b3b69;
+$btnBlue : #3d97cb;
+$heading-blue : #002554;
+$help-blue : #256396;
+$border-color : #e3e3e3;
+$border-hover : #6a6a6a;
+$star-red : #ff4444;
+$default-btn-color : #007c82;
+$nav-color : #3d3d3d;
+$nav-child-color : #6f6f6f;
+$table-header : #029fca;
+$odd-row : #e9f4f8;
+$even-row : #dff1f8;
+$table-color : #505b68;
+$left-nav-bg : #f1f9ff;
+$error-red : #f41e2d;
+$detail-heading : #292929;
+$radio-btn : #d7d7d7;
+$print-table-head : #aec8da;
+$accordian-table-head : #c3d7dc;
+
+
+// responsice Screens 
+$desk-width : 87.4375rem; //1399px
+$tablet-width : 61.9375rem; //991px
+$mobile-width : 47.9375rem; //767px
+$mobile_min-width : 48rem;//768px
+$tablet_min-width : 62rem; //992px
+
+
+
+// Sizes Variables
+$extraSmall : 0.625rem; // 10px
+$small : 1.25rem;       // 20px
+$extraMedium : 1.875rem;// 30px
+$medium : 2.5rem;       // 40px
+$large : 3.125rem;      // 50px
+$extraLarge : 3.75rem;  // 60px
+$XLLarge : 4.375rem;    // 70px
+$DexktopLagre : 5rem;   // 80px
+
+
+// padding space variable
+$rem-pad : 1rem; // 16px
+$input-padding : 0.75rem; // 12px;
+$rem2-pad : 1.5rem; // 24px
+$rem3-pad : 2rem; // 32px
+$tab-margin : 14.375rem; // 230px
+
+
+// Width Variables
+$container-width: 87.5rem;
+$full : 100%;
+$x1-width : 3.125rem; // 50px
+$x2-width : 6.250rem; // 100px
+$x3-width : 9.375rem; // 150px
+$x4-width : 12.500rem; // 200px
+$x5-width : 15.625rem; // 250px
+$x6-width : 18.750rem; // 300px
+$x7-width : 21.875rem; // 350px
+$x8-width : 25.000rem; // 400px
+$x9-width : 28.125rem; // 450px
+$x10-width : 31.250rem; // 500px

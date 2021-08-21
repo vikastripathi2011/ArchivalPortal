@@ -1,0 +1,265 @@
+﻿@{
+    ViewBag.Title = "Archive Portal";
+    string rootDir = string.Empty;
+    string _ChkUser = string.Empty;
+    var baseUrl = WLCaxtonMvcWebPortal.Util.Util.BaseUrl;
+    if (Convert.ToString(WLCaxtonMvcWebPortal.Util.SessionClass.loggedUser.LoginDetails) != "")
+    {
+        _ChkUser = Convert.ToString(WLCaxtonMvcWebPortal.Util.SessionClass.loggedUser.LoginDetails.Name);
+
+    }
+    else
+    {
+        Session.Abandon();
+    }
+}
+<!DOCTYPE html>
+<noscript>
+    For full functionality of this site it is necessary to enable JavaScript.
+    Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+        instructions how to enable JavaScript in your web browser
+    </a>
+</noscript>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>.::@ViewBag.Title - Back Office System::.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10, user-scalable=yes">
+
+    @****************************** All Script file *********************************************************@
+    @Scripts.Render(Url.Content("~/Styles/js/jquery-3.3.1.min.js"))
+    <!-- include alertify.js -->
+    @Scripts.Render(Url.Content("~/Scripts/alertify.js-0.3.10/lib/alertify.js"))
+
+    <!--Disable Ctrl Key, Right click and F12  -->
+    <script src="@Url.Content("~/Scripts/UserJs/Common2.js")" type="text/javascript"></script>
+
+    @****************************** All Css file *********************************************************@
+    @Styles.Render(Url.Content("~/Styles/css/main.css"))
+    <!-- include alertify.css -->
+    @Styles.Render(Url.Content("~/Scripts/alertify.js-0.3.10/themes/alertify.core.css"))
+    @Styles.Render(Url.Content("~/Scripts/alertify.js-0.3.10/themes/alertify.bootstrap.css"))
+
+    <!-- include boostrap theme  -->
+
+    <script type="text/javascript">
+        //global varriable for dyanamic  path
+        var rootDir = "@Url.Content("~/")";
+
+        var allMessages = '';
+        $(document).ready(function () {
+            $(".loaderBg").ajaxStart(function () {
+                $(this).show();
+            });
+
+            $(".loaderBg").ajaxStop(function () {
+                $(this).hide();
+            });
+        });
+        //this code for live to check user session.
+        //
+        //$(document).click(function () {
+        //    $.ajax({
+        //        url: rootDir + 'Login/CheckUserSession',
+        //        type: 'Post',
+        //        data: {},
+        //        global: false,
+        //        success: function (data) {
+        //            if (data != "") {
+        //                $(location).attr('href', rootDir + "Login/UserLogin" + data);
+        //            }
+        //        },
+        //        failure: function (data) {
+        //            alertify.alert('<b>Error:</b> \n<br>  Oops! There seems to be a problem with your internet connection. Please check your settings. ');
+        //        },
+        //        error: function (jqXHR, textStatus, errorThrown) {
+        //            alertify.alert('<b>Error:</b> \n<br>  Oops! Your session has been expired. Please login again.');
+        //        },
+        //        complete: function (xhr, status) {
+        //        }
+        //    });
+        //});
+
+        /***********************************************/
+        
+    </script>
+
+</style>
+
+</head>
+<body >
+    <!--Loader Image -->
+    <div class="loaderBg" style="width: 100%; height: 100%; display: none; background: url(@Url.Content("~/Images/transparent.png")) repeat;
+        position: fixed; z-index: 99999; /*margin: -100px 0px 0px 0px*/">
+        <div class="loader" style="position: absolute; top: 40%; left: 0; right: 0; text-align: center;">
+            <img src="@Url.Content("~/Images/loader.gif")" width="100px" id="img" />
+        </div>
+    </div>
+
+    <!-- Header Html Start -->
+    <header>
+        <div class="container">
+            <div class="header">
+                <a href="@Url.Content("~/Login/Home?PageName=Home")">
+                    <img src="@Url.Content("~/Styles/images/logo.png")" alt="Logo">
+                </a>
+                <ul class="header__top-nav">
+                    <li class="header__top-nav--mobile-nav">
+                        <a href="#">Nav</a>
+                    </li>
+
+                    <li class="header__top-nav--sign dropdown">
+                       
+                        @if (_ChkUser != "")
+                        {
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">
+                                Welcome: @_ChkUser <span class="caret"></span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">
+                                Welcome: Anonymous User <span class="caret"></span>
+                            </a>
+                        }
+                        <ul class="dropdown-menu">
+                           
+
+                            <li><a href="@Url.Action("LogOff","Login", new { area="" })">Logout</a></li>
+                          
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Header Html End -->
+
+    <section class="middle-part">
+        <div class="container">
+            <!-- Simple Nav tabs Start -->
+            <nav class="middle-part__left-nav">
+                <!-- Simple Nav tabs Start -->
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <a class="mobile-nav-close" href="#">Close</a>
+                    @{
+                        WLCaxtonPortalBusinessEntity.User loggedUser = WLCaxtonMvcWebPortal.Util.SessionClass.loggedUser;
+            if(loggedUser.RoleDetails !=null)
+                {
+
+                        if (loggedUser.RoleDetails.RecordId != (int)WLCaxtonPortalBusinessEntity.UserType.TenantAdmin)
+                        {
+                            <div class="panel panel-default">
+                                <div class="panel-heading password-heading" role="tab" id="nav1">
+                                    <h4>
+                                        @*<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Search</a>*@
+                                        @Html.ActionLink("Search", "Search", "UserActvity", new { Area = "UserActvity", PageName = "Search" }, new { })
+                                    </h4>
+                                </div>
+                                @*<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="nav1">
+                                        <div class="panel-body">
+                                            @Html.ActionLink("Search Details", "Search", "UserActvity", new { Area = "UserActvity", PageName = "Search" }, new { })
+                                        </div>
+                                    </div>*@
+                            </div>
+
+                        }
+                        if (loggedUser.RoleDetails.RecordId != (int)WLCaxtonPortalBusinessEntity.UserType.User)
+                        {
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="nav2">
+                                    <h4>
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">User Maintenance</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="nav2">
+                                    <div class="panel-body">
+                                        @Html.ActionLink("User Listing", "UserListing", "UserMntnanc", new { Area = "UserMaintenance", PageName = "User_Listing" }, new { })
+                                        @Html.ActionLink("Create User", "CreateUser", "UserMntnanc", new { Area = "UserMaintenance", PageName = "Create_User" }, new { })
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="panel panel-default">
+                            <div class="panel-heading password-heading" role="tab" id="nav3">
+                                <h4>
+                                    @Html.ActionLink("Change Password", "ChangePassword", "UserMntnanc", new { Area = "UserMaintenance", PageName = "Change_Password" }, new { @class = "collapsed" })
+                                </h4>
+                            </div>
+
+                        </div>
+                            <div class="panel panel-default">
+                            <div class="panel-heading password-heading" role="tab" id="nav3">
+                                <h4>
+                                        <a href="~/UserManual/Caxton User Manual V1.0.pdf" target="_blank" class="collapsed">Help</a>
+                                </h4>
+                            </div>
+
+                        </div>
+                   
+
+        }
+                       
+                    }
+                </div>
+            </nav>
+
+
+            <!-- Simple Nav tabs End -->
+            <!-- page render here start -->
+
+            <span id="body">
+                @RenderSection("featured", required: false)
+                @RenderBody()
+
+            </span>
+
+            <!-- page render here end -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Copyright Williams Lea Tag. All Rights Reserved.</p>
+        </div>
+        @using (Html.BeginForm("", "", new { Area = "" }, FormMethod.Post, new { id = "logoutForm", action = "/Login/LogOff" }))
+        {
+
+        }
+    </footer>
+    <!-- Footer Html End -->
+
+
+    @Scripts.Render(Url.Content("~/Styles/js/sign_of.min.js"))
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/Buttons-1.5.1/js/dataTables.buttons.js"))
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/Buttons-1.5.1/js/buttons.flash.min.js"))
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/JSZip-2.5.0/jszip.min.js"))
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/pdfmake-0.1.32/vfs_fonts.js"))
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/Buttons-1.5.1/js/buttons.html5.min.js"))
+   
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/Buttons-1.5.1/js/buttons.print.js"))
+  
+    @Styles.Render(Url.Content("~/Scripts/DataTables/Buttons-1.5.1/css/buttons.dataTables.css"))
+
+    @Styles.Render(Url.Content("~/Scripts/DataTables/ColReorder-1.4.1/css/colReorder.jqueryui.css"))
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/ColReorder-1.4.1/js/dataTables.colReorder.js"))
+
+    @Styles.Render(Url.Content("~/Scripts/DataTables/RowGrouping-1.0.2/css/rowGroup.jqueryui.min.css"))
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/RowGrouping-1.0.2/js/dataTables.rowGroup.min.js"))
+    @Scripts.Render(Url.Content("~/Scripts/DataTables/Buttons-1.5.1/js/buttons.colVis.js"))
+
+    @Scripts.Render(Url.Content("~/Styles/js/custom.js"))
+    @Scripts.Render(Url.Content("~/Scripts/UserJS/browserClose.js?vs=1.1"))
+
+
+    <script type="text/javascript">
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+
+
+
+</body>
+</html>

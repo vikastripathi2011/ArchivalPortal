@@ -1,0 +1,183 @@
+.loginSection {
+	display: flex;
+
+	@media (max-width: 560px) {
+		display: block;
+	}
+
+	align-items: stretch;
+	justify-content: center;
+	height: $full;
+
+	&__leftPart, &__rightPart {
+
+		min-width: 50%;
+		&--content {
+			display: flex; 
+			align-items: center; 
+			justify-content: center;
+			height: $full;
+
+			@media (max-width: 560px) {
+				width: $full;
+			}
+		}
+	}
+
+	&__leftPart {
+
+		&--content-details {
+			background-color: $lightblue;
+			width: $full;
+    		text-align: center;
+    		@include space(padding, top, $DexktopLagre);
+    		@include space(padding, bottom, $DexktopLagre);
+    		@include space(padding, left, $small);
+    		@include space(padding, right, $small);
+    		@include border('top');
+    		@include border('bottom');
+
+    		@media (max-width: $mobile-width) {
+    			@include space(padding, left, $input-padding);
+    			@include space(padding, right, $input-padding);
+    			@include space(padding, top, $extraMedium);
+    			@include space(padding, bottom, $extraMedium);
+    		}
+
+    		@media (max-width: 560px) {
+				@include space(padding, top, $rem2-pad);
+    			@include space(padding, bottom, $rem2-pad);
+			}
+
+    		h1 {
+    			font-family: $global-font-semibold;
+    			@include font-size(41);
+    			@include line-height(41);
+    			color: $white;
+    			@include space(padding, bottom, 0);
+    			@include space(padding, top, $medium);
+    			@include space(padding, bottom, $input-padding);
+
+    			@media (max-width: $mobile-width) {
+    				@include font-size(26);
+    				@include line-height(32);
+    				@include space(padding, top, $input-padding);
+    				@include space(padding, bottom, $input-padding);
+    			}
+    		}
+
+    		h2 {
+    			@include font-size(32);
+    			@include line-height(41);
+    			color: $loginHeading;
+    			font-family: $global-font;
+    			text-transform: none;
+
+    			@media (max-width: $mobile-width) {
+    				@include font-size(19);
+    				@include line-height(20);
+    				@include space(padding, bottom, $input-padding);
+    			}
+    		}
+		}
+		
+	}
+
+	&__rightPart {
+
+		@media (max-width: 560px) {
+			display: flex;
+			height: calc(100% - 19rem);
+    		align-items: center;
+		}
+		
+		&--content-details {
+			width: $full;
+			@include space(padding, all, $extraLarge);
+
+			@media (max-width: $tablet-width) {
+				@include space(padding, all, $extraSmall);
+			}
+
+			h2 {
+				@include font-size(32);
+				@include line-height(38);
+				@include space(padding, bottom, 0);
+				font-family: $global-font;
+    			text-transform: none;
+
+    			@media (max-width: $mobile-width) {
+    				@include font-size(26);
+    				@include line-height(24);
+    			}	
+
+    			@media (max-width: 560px) {
+					@include space(padding, top, $medium);
+				}
+			}
+
+			.login-form {
+
+				&__form-group {
+
+					input.form-control {
+
+						@include space(margin, top, $extraLarge);
+
+						@media (max-width: $mobile-width) {
+							@include space(margin, top, $small);
+						}
+
+						@media (max-width: 812px) {
+							@include space(margin, top, $rem2-pad);
+						}
+
+						@media (max-width: 359px) {
+							@include space(margin, top, $rem-pad);
+						}
+
+						@include space(padding, bottom, $rem-pad);
+						@include border('top', 0px);
+						@include border('left', 0px);
+						@include border('right', 0px);
+						@include border('bottom', 2px, solid, $extraLightGray);
+						@include border-radius(0);
+						@include box-shadow(0, 0, 0, 0, $white);
+						@include placeholder($extraLightBlue);
+						font-family: $global-font-medium;
+						height: $large;
+						@include font-size(16);
+
+						&:focus {
+							@include border('bottom', 2px, solid, $darkBlue);
+							color: $darkBlue;
+							@include placeholder($darkBlue);
+						}
+					}
+
+					input.form-controlError {
+						@include border('bottom', 2px, solid, $error-red);
+
+						&:focus {
+							@include border('bottom', 2px, solid, $error-red);
+							@include placeholder($error-red);
+						}
+					}
+
+					&:nth-of-type(3) {
+						text-align: right;
+					}
+
+					.forget-btn {
+						@include space(padding, top, $small);
+
+						@media (max-width: $mobile-width) {
+							@include font-size(14);
+						}
+					}
+				}
+
+			}
+		}
+	}
+}

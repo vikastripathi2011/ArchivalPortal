@@ -1,0 +1,67 @@
+﻿@model WLCaxtonPortalBusinessEntity.User
+
+@Scripts.Render(Url.Content("~/Scripts/Areajs/UserMaintenance.js"))
+
+<div class="middle-part__tab" id="dvMainRegis">
+    <h2 class="middle-part__tab--head-with-password-icon">User Creation Form</h2>
+    <hr class="middle-part__tab--devider">
+    <!-- Simple Form Html Start -->
+    <section class="simple-form">
+        <div class="container">
+            <section id="sectionSuccess" class="notification-section">
+                <div class="alert alert-success alert-dismissible" role="alert" style="display: none">
+                    <button type="button" class="close valid"><span aria-hidden="true">&times;</span></button>
+                    <p></p>
+                </div>
+            </section>
+            <section id="sectionInfo" class="notification-section">
+                <div class="alert alert-warning alert-dismissible" role="alert" style="display: none">
+                    <button type="button" class="close infoValid"><span aria-hidden="true">&times;</span></button>
+                    <p></p>
+                </div>
+            </section>
+            <section id="sectionError" class="notification-section">
+                <div class="alert alert-danger alert-dismissible" role="alert" style="display: none">
+                    <button type="button" class="close unvalid"><span aria-hidden="true">&times;</span></button>
+                    <p></p>
+                </div>
+            </section>
+            @if (Model != null)
+            {
+                @Html.Hidden("hdnUserId", Model.UserId)
+            }
+            <div class="simple-form__form-group row">
+                <div class="col-sm-6 col-md-5">
+                    <label class="simple-form__form-group--label">Access level :<span>*</span> </label>
+                    @Html.DropDownListFor(model => model.RoleDetails.RecordId, new SelectList((System.Collections.IEnumerable)ViewBag.Roles, "RecordId", "Name"), "--Select Role--", new { @class = "nice-select" } )
+                    <label id="lblRolesError" class="simple-form__form-group--label simple-form__form-group--labelError"></label>
+                </div>
+                <div class="col-sm-6 col-md-5">
+                    <label for="user" class="simple-form__form-group--label">User Name :<span>*</span> </label>
+                    @Html.EditorFor(model => model.UserEmailId, new { htmlAttributes = new { @class = "simple-form__form-group--input", @placeholder = "Username", @maxlength = 50 } })
+                    <label id="lblUserEmailIdError" class="simple-form__form-group--label simple-form__form-group--labelError"></label>
+                </div>
+            </div>
+            <div class="simple-form__form-group row">
+
+                <div class="col-sm-6 col-md-5">
+                    <label for="FirstName" class="simple-form__form-group--label">First Name :<span>*</span></label>
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "simple-form__form-group--input restict-special", @placeholder = "First Name", @maxlength = 15 } })
+                    <label id="lblFirstNameError" class="simple-form__form-group--label simple-form__form-group--labelError"></label>
+                </div>
+                <div class="col-sm-6 col-md-5">
+                    <label for="LastName" class="simple-form__form-group--label">Last Name :<span>*</span></label>
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @Class = "simple-form__form-group--input restict-special", @Placeholder = "Last Name", @maxlength = 15 } })
+                    <label id="lblLastNameError" class="simple-form__form-group--label simple-form__form-group--labelError"></label>
+                </div>
+            </div>
+
+
+            <input type="submit" class="default-btn" id="btnSaveUser" value="Create" onclick="fn_UserRegistration();" />
+            <button type="submit" class="default-btn" onclick="ClearAll();">Clear</button>
+        </div>
+
+    </section>
+    <!-- Simple Form Html End -->
+</div>
+

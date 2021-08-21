@@ -1,0 +1,25 @@
+.notification-section {
+	.alert {
+		@include space(padding, left, $XLLarge);
+
+		&.alert-success {
+			@include background('../images/sprite2.png', 0rem -135.4rem);
+		}
+
+		&.alert-info {
+			@include background('../images/sprite2.png', 0rem -111.4rem);
+		}
+
+		&.alert-warning {
+			@include background('../images/sprite2.png', 0rem -127.5rem);
+		}
+
+		&.alert-danger {
+			@include background('../images/sprite2.png', 0rem -119.4rem);
+		}
+
+		.close {
+			@include font-size(32);
+		}
+	}
+}

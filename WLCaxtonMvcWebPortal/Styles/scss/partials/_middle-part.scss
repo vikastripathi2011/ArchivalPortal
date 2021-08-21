@@ -1,0 +1,70 @@
+.middle-part {
+	display: flex;
+	max-height: calc(100% - 7.9rem);
+	min-height: calc(100% - 7.9rem);
+	overflow-y: auto;
+
+	&__tab {
+		width: auto;
+		@include space(margin, left, $tab-margin);
+		@include space(padding, all, $rem2-pad);
+		//@include border('left', 1px, solid, $border-color);
+		min-height: calc(100%);
+
+		@media (max-width: $tablet-width) {
+			@include space(padding, all, 0);
+		}
+
+		@media (max-width: $mobile-width) {
+			@include space(margin, left, 0);
+		}
+
+		&--devider {
+			@include space(margin, all, 0);
+			@include border('top', 1px, solid, $border-color);
+			@include space(margin, left, $rem-pad);
+			@include space(margin, right, $rem-pad);
+		}
+
+		h2 {
+			@include space(padding, left, $rem-pad);
+			@include space(padding, right, $rem-pad);
+			@include space(padding, top, $rem-pad);
+
+			&.middle-part__tab--head-with-icon {
+				@include space(padding, left, $large);
+				@include background('../images/sprite2.png', -.3125rem .875rem);
+			}
+
+			&.middle-part__tab--head-with-CYBGicon {
+				@include space(padding, left, $large);
+				@include background('../images/sprite2.png', -.3125rem -5.9rem);
+			}
+
+			&.middle-part__tab--head-with-document-icon {
+				@include space(padding, left, $large);
+				@include background('../images/sprite2.png', -.3125rem -32rem);
+			}
+
+			&.middle-part__tab--head-with-password-icon {
+				@include space(padding, left, $large);
+				@include background('../images/sprite2.png', -.3125rem -32rem);
+			}
+
+			&.middle-part__tab--head-with-manage-icon {
+				@include space(padding, left, $large);
+				@include background('../images/sprite2.png', -0.3125rem -80.8rem);
+			}
+
+			&.middle-part__tab--head-with-create-icon {
+				@include space(padding, left, $large);
+				@include background('../images/sprite2.png', -0.3125rem -103.3rem);
+			}
+		}
+	}
+
+	&__tab2 {
+		@include space(padding, left, 0);
+		@include space(padding, right, 0);
+	}
+}

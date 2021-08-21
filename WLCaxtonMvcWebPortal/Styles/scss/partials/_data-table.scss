@@ -1,0 +1,121 @@
+.dataTables_wrapper {
+
+	//@include space(margin, top, $medium);
+
+	.dataTables_paginate {
+		.paginate_button {
+			background: transparent;
+			padding: 0 !important;
+			border: 0 !important;
+		}
+	}
+	
+	.dataTables_length, .dataTables_filter {
+		display: none;
+	}
+
+	table {
+		&.dataTable {
+			thead {
+				th {
+					@include border('bottom', 0);
+				}
+			}
+			&.no-footer {
+				@include border('bottom', 0);
+			}
+		} 
+		
+		thead {
+			background: $table-header;
+
+			th {
+				@include font-size(14);
+				color: $white;
+				font-weight: normal !important;
+				padding-top: $small !important;
+				padding-bottom: $small !important;
+				padding-left: $extraSmall !important;
+				padding-right: $extraSmall !important;
+				vertical-align: middle;
+
+				&:first-child {
+					@include border-top-left-radius($extraSmall);
+
+					@media (max-width: $mobile-width) {
+						@include border-top-left-radius(0);
+					}
+				}
+				&:last-child {
+					@include border-top-right-radius($extraSmall);
+				}
+
+				&:after {
+					bottom: $rem2-pad !important;
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				color: $table-color;
+
+
+				&.odd {
+					background-color: $odd-row;
+				}
+				&.even {
+					background-color: $even-row;
+				}
+
+				td {
+					@include space (padding, top, $extraSmall);
+					@include space (padding, bottom, $extraSmall);
+					@include space (padding, left, $extraSmall);
+					@include space (padding, right, $extraSmall);
+					@include font-size(13);
+					@include border('bottom', 1px, solid, $border-color);
+					vertical-align: middle;
+
+					a {
+						text-decoration: underline;
+					}
+
+					.nice-select {
+						@include space(margin, bottom, 0);
+					}
+
+					.show-details {
+						height: $extraMedium;
+						width: $medium;
+						@include background('../images/sprite2.png', -0.7rem -40rem);
+						text-indent: -9999rem;
+						display: block;
+						cursor: pointer;
+					}
+
+					.show-files {
+						height: $rem2-pad;
+						width: $rem2-pad;
+						@include background('../images/sprite2.png', -1.5rem -46.8rem);
+						text-indent: -9999rem;
+						display: block;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+	top: 9px !important;
+}
+
+.dataTables_paginate {
+	margin-bottom: 1.875rem !important;
+
+	@media (max-width: $mobile-width) {
+		margin-bottom: 0 !important;
+	}
+}

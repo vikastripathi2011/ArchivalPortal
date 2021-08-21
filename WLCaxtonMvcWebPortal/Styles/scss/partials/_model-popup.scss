@@ -1,0 +1,45 @@
+.model-popup-section {
+	.modal {
+		.modal-dialog {
+			//width: calc(100% - 30px);
+			&.modal-lg {
+				@media (min-width: $mobile_min-width) {
+					width: calc(100% - 10rem); 
+				}
+			}
+
+			.modal-content {
+
+				.modal-header {
+					@include border(bottom, 0);
+					.close {
+						@include font-size(32);
+						@include line-height(0);
+						@include space(margin, top, 0);
+					}
+
+					h4 {
+						@include font-size(20);
+					}
+				}
+
+				.modal-body {
+					@include space(padding, top, 0);
+					@include space(padding, bottom, 0);
+				}
+
+				.modal-footer {
+						@include space(padding, top, $extraSmall);
+						@include space(padding, bottom, $extraSmall);
+					.default-btn {
+						@include font-size(14);
+						@include space(padding, top, $extraSmall);
+						@include space(padding, bottom, $extraSmall);
+						@include space(padding, left, $rem-pad);
+						@include space(padding, right, $rem-pad);
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,215 @@
+﻿@model WLCaxtonPortalBusinessEntity.Document
+
+<style>
+    label {
+        font-weight: bold;
+    }
+</style>
+
+
+<!-- Header Html End -->
+
+<section>
+    @if (Model != null)
+    {
+        <div class="container">
+
+            <!-- Simple Nav tabs End -->
+            <!-- Tab panes -->
+            @*<div class="middle-part__tab">*@
+            <h2 class="middle-part__tab--head-with-document-icon">Show document details</h2>
+            <div class="gridTitle" style="display: block">
+
+                <span style="padding-left:95%;padding-right:70px" onclick="printDiv('formPrint');">
+                    <img src='@Url.Content("~/Images/PrintAll.png")' title='Print All'
+                         @*OnClick="window.open('./PopupPrintUserList.aspx','PrintSeachResult','fullscreen=no, resizable=yes, scrollbars=1'); return false;"*@ />
+                </span>
+
+            </div>
+            <hr class="middle-part__tab--devider">
+            <!-- Simple Form Html Start -->
+            <section class="simple-form">
+
+
+                <div class="formdiv" id="formPrint">
+                    <table class="print-table" border="2" style="border-collapse:collapse" cellpadding="12" cellspacing="4">
+                        <tr>
+                            <td >
+                                <label>Policy Number</label>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.AccountNumber)
+                            </td>
+
+                            <td >
+                                <label>Date</label>
+                            </td>
+                            <td>
+                                @if (Model.DocumentDate != null)
+                                {
+                                    @String.Format("{0:ddd, dd MMM yyyy}", Model.DocumentDate)
+
+                                }
+                            </td>
+                            <td >
+                                <label>DocTypes</label>
+                            <td>
+                                @Html.DisplayFor(model => model.DocumentType.DocumentTypeName)
+                            </td>
+
+                        </tr>
+                        <tr>
+
+                            <td >
+                                <label>Product</label>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductCategory.ProductCategoryName)
+                            </td>
+                            <td >
+                                <label>Zip Code</label>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.PostCode)
+                            </td>
+                            <td >
+                                <label>Page Count</label>
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.PageCount)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td >
+                                <label>Spool Name</label>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Spoolname)
+                            </td>
+                            <td >
+                                <label>Stream-Code</label>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.StreamName)
+                            </td>
+
+                            <td  colspan="2">
+                                @if (Model.Inserts != "undefined")
+                                {
+                                    <div class="form-group">
+                                        <label>Inserts</label>
+                                        @Html.DisplayFor(model => model.Inserts)
+                                    </div>
+                                }
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <label>Time Stamp</label>
+                            </td>
+                            <td>
+                                @String.Format("{0:ddd, dd MMM yyyy HH:MM:ss}", Model.DocumentGenerationDateTime)
+                                @*@ Html.DisplayFor(model=> model.DocumentGenerationDateTime)*@
+                            </td>
+
+                            <td >
+                                <label>Job Id</label>
+                            </td>
+                            <td colspan="3">
+                                @Html.DisplayFor(model => model.JobId)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <h3 class="form-heading">View Files</h3>
+                <div id="dvView">
+                    <table class="print-table">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <label> Complete Document</label>
+                                </td>
+
+                                <td>
+                                    <span id="dvpdf" class="dvpdf" title='Show PDF' style="cursor: pointer;"
+                                          data-DocguId="@Model.DocumentGuid"
+                                          data-cnt="@Model.PageCount"
+                                          data-spn="0"
+                                          onclick="javascript: fn_GetpdfDocument(this)">
+                                        @* <a href="https://dev-rsa.wlt.hcpnp.global.wlt.com/rest/@Model.MasterdocList[i].pageURL" target="_blank"><img src='@Url.Content("~/Images/file-pdf.png")' class="no-print" title='Show PDF' /></a>*@
+                                        <a>
+                                            <img src='@Url.Content("~/Images/file-pdf.png")' class="no-print" title='Show PDF' />
+                                            @(String.Format("{0}{1}", Model.AccountNumber, ".pdf"))
+                                        </a>
+                                    </span>
+                                    @*<a href=@Url.Action("ShowPDF", "Data", new { guid = Model.DocumentGuid, pgc = Model.PageCount, spn = "1" }) target="_blank">
+                                            <img src='@Url.Content("~/Images/file-pdf.png")' title='Show PDF' />
+                                            @(String.Format("{0}{1}", Model.AccountNumber, ".pdf"))
+
+                                        </a>*@
+                                </td>
+
+                                <td>
+                                    <label> Page Count </label>
+                                </td>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.SubDocumentDetails)
+                        {
+                            <tr>
+                                <td>
+
+                                    <label>  @item.SubDocumentName</label>
+                                </td>
+                                <td>
+                                    <span id="dvpdf" class="dvpdf" title='Show PDF' style="cursor: pointer;"
+                                          data-DocguId="@item.ParentDocGuid"
+                                          data-cnt="@item.PageCount"
+                                          data-spn="@item.SubDocumentStartPage"
+                                          onclick="javascript: fn_GetpdfDocument(this)">
+                                        @* <a href="https://dev-rsa.wlt.hcpnp.global.wlt.com/rest/@Model.MasterdocList[i].pageURL" target="_blank"><img src='@Url.Content("~/Images/file-pdf.png")' class="no-print" title='Show PDF' /></a>*@
+                                        <a>
+                                            <img src='@Url.Content("~/Images/file-pdf.png")' class="no-print" title='Show PDF' />
+                                            @(String.Format("{0}_{1}{2}", item.ParentDocAccountNumber, item.SubDocumentName, ".pdf"))
+                                        </a>
+                                    </span>
+
+                                    @*<a href='@Url.Action("ShowPDF", "Data", new { guid = item.ParentDocGuid, pgc = item.PageCount, spn = item.SubDocumentStartPage })#page=@item.PageCount' target="_blank">
+                                            <img src='@Url.Content("~/Images/file-pdf.png")' title='Show PDF' />
+                                            @(String.Format("{0}_{1}{2}", item.ParentDocAccountNumber, item.SubDocumentName, ".pdf"))
+
+                                        </a>*@
+                                </td>
+
+                                <td>
+
+                                    <label>  @item.PageCount</label>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </section>
+            <!-- Simple Form Html End -->
+        </div>
+        @*</div>*@
+
+
+    }
+    else
+    {
+        <div id="dvNoRecordsFound" style="padding: 0px 0px 0px 400px;" class="note">
+            <strong class="notehead">
+                <label id="lblErrorMesg" title="Record not fount...!" style="color: red;">
+                    Record not found...!
+                </label>
+            </strong>
+        </div>
+
+    }
+</section>
+
+

@@ -1,0 +1,96 @@
+.account-detail-section {
+	.account-detail {
+		@include space(padding, top, 0);
+	}
+}
+
+.account-detail {
+	@include space(padding, top, $small);
+	@include space(padding, bottom, $small);
+	@include space(padding, left, $rem-pad);
+	@include space(padding, right, $rem-pad);
+	display: flex;
+	color: $detail-heading;
+
+	@media (max-width: $tablet-width) {
+		display: block;
+	}
+
+	&__items {
+		width: 50%;
+		//@include border('right', 1px, solid, $border-color);
+
+		&:last-of-type {
+			@include border('right', 0);
+			@include space(padding, left, $rem2-pad);
+
+			@media (max-width: $tablet-width) {
+				@include space(padding, left, 0);
+			}
+		}
+
+		&:first-of-type {
+			@include space(padding, left, 0);
+		}
+
+		@media (max-width: $tablet-width) {
+			width: $full;
+			@include space(margin, bottom, $extraMedium);
+			@include border('right', 0)
+		}
+
+		.detail-table {
+			.detail-table-row {
+				display: flex;
+				@include space(padding, right, $extraSmall);
+				@include line-height(20);
+
+				&:nth-child(odd) {
+					background-color: $even-row;
+				}
+
+				&:nth-child(even) {
+					background-color: $odd-row;
+				}
+
+				&:last-of-type {
+					@include space(margin, bottom, $rem-pad);
+				}
+
+				@media (max-width: $mobile-width) {
+					@include space(padding, right,0);
+					@include font-size(14);
+				}
+
+				.detail-table-column {
+					@include space(padding, bottom, $input-padding);
+					@include space(padding, top, $input-padding);
+					@include space(padding, left, $input-padding);
+					@include space(padding, right, $input-padding);
+					@include font-size(14);
+
+					&:first-child {
+						width: 60%;
+					}
+
+					&:last-child {
+						width: 40%;
+					}
+
+					a {
+						font-weight: bold;
+					}
+
+					strong {
+						font-weight: bold;
+						font-family: $global-font-bold;
+					}
+				}
+			}
+		}
+	}
+
+	&__singleItem {
+		width: 100%;
+	}
+}

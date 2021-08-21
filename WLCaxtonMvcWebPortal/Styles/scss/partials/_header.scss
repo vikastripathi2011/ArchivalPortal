@@ -1,0 +1,119 @@
+header {
+	background: $heading-blue;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@media (max-width: $mobile-width) {
+			img {
+				//width: 45%;
+				display: block;
+				@include space(padding, left, .5rem);
+				@include space(padding, right, .5rem);
+			}
+		}
+
+		&__top-nav {
+			display: flex;
+			li {
+				display: inline-block;
+				min-width: 4rem;
+				@media (max-width: $mobile-width) {
+					display: none;
+				}
+
+				&:last-child {
+					@media (max-width: $mobile-width) {
+						display: block;
+					}
+				}
+
+				a {
+					width: $full;
+					@include space(padding, all, 1.5rem);
+					display: block;
+					text-indent: -999rem;
+					text-transform: uppercase;
+					color: $white;
+					@include font-size(14);
+				}
+
+				&:last-child {
+					a {
+						text-indent: 0;
+						@include space(padding, left, $large);
+
+						@media (max-width: $mobile-width) {
+							text-indent: -999rem;
+							@include space(padding, all, 1rem);
+							@include font-size(1);
+						}
+					}
+				}
+			}
+
+			&--mobile-nav {
+				@include background('../images/sprite.png', 39% 52.7%);
+				background-color: $help-blue;
+				display: none !important;
+
+				@media (max-width: $mobile-width) {
+					display: block !important;
+				}
+			}
+
+			&--help {
+				@include border('left', 1px, solid, $white);
+				@include border('right', 1px, solid, $white);
+				@include background('../images/sprite.png', 63% 15%);
+				background-color: $help-blue;
+			}
+
+			&--faq {
+				@include background('../images/sprite.png', 75% 35.7%);
+				background-color: $help-blue;
+			}
+
+			&--sign {
+				@include background('../images/sprite.png', 3% 25.7%);
+				background-color: $btnBlue;
+
+				@media (max-width: $mobile-width) {
+					@include background('../images/sprite.png', 74% 25.7%);
+				}
+			}
+		}
+
+		.dropdown {
+			.dropdown-menu {
+				min-width: 97%;
+				@include space(padding, top, 0);
+				@include space(padding, bottom, 0);
+
+				@media (max-width: $mobile-width) {
+					left: -15px;
+				}
+				li {
+					display: block;
+
+					&:last-child {
+						a {
+							@include space(padding, all, $extraSmall);
+							color: $nav-color;
+							display: block;
+							text-indent: 0;
+
+							&:hover {
+								background: transparent;
+							}
+						}
+					}
+					
+				}
+			}
+		}
+	}
+}
+

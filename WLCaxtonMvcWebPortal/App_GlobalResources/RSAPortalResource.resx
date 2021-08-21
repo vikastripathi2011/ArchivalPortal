@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnApprove" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="btnDeny" xml:space="preserve">
+    <value>Deny</value>
+  </data>
+  <data name="btnRequest" xml:space="preserve">
+    <value>Request</value>
+  </data>
+  <data name="btnLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="cvPassword" xml:space="preserve">
+    <value>Passwords do not match</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="lblUserRoles" xml:space="preserve">
+    <value>Access level :</value>
+  </data>
+  <data name="lblEmailId" xml:space="preserve">
+    <value>Username :</value>
+  </data>
+  <data name="lblMsgPasswordSent" xml:space="preserve">
+    <value>Password Sent on your email id.</value>
+  </data>
+  <data name="lblNewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="lblOldPassword" xml:space="preserve">
+    <value>Old Password</value>
+  </data>
+  <data name="lblPassword" xml:space="preserve">
+    <value>Password :</value>
+  </data>
+  <data name="lblReTypePassword" xml:space="preserve">
+    <value>Re-Type Password</value>
+  </data>
+  <data name="lblTitleChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="lblTitleLogin" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="lblTitleRequestApproval" xml:space="preserve">
+    <value>Request Approval</value>
+  </data>
+  <data name="lblTitleUserCreation" xml:space="preserve">
+    <value>User Creation Form</value>
+  </data>
+  <data name="lblUserEmailId" xml:space="preserve">
+    <value>User Email ID:</value>
+  </data>
+  <data name="lblUserFirstName" xml:space="preserve">
+    <value>First Name :</value>
+  </data>
+  <data name="lblUserLastName" xml:space="preserve">
+    <value>Last Name :</value>
+  </data>
+  <data name="lnkForgot" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="revEmailId" xml:space="preserve">
+    <value>Please enter a valid Username.</value>
+  </data>
+  <data name="revNewPassword" xml:space="preserve">
+    <value>Your new password cannot contain any of the following characters:    / \ ? [ ] | &lt; &gt; = , ? * { } . ` "</value>
+  </data>
+  <data name="rfvEmailId" xml:space="preserve">
+    <value>Please enter a Username.</value>
+  </data>
+  <data name="rfvNewPassword" xml:space="preserve">
+    <value>Please enter a new password.</value>
+  </data>
+  <data name="rfvOldPassword" xml:space="preserve">
+    <value>Please enter your old password.</value>
+  </data>
+  <data name="rfvPassword" xml:space="preserve">
+    <value>Please enter Password.</value>
+  </data>
+  <data name="rfvUserFirstName" xml:space="preserve">
+    <value>Please enter the user's first name.</value>
+  </data>
+  <data name="rfvUserLastName" xml:space="preserve">
+    <value>Please enter the user's last name.</value>
+  </data>
+  <data name="lblTitleForgotPwd" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="lblTitleDocDetails" xml:space="preserve">
+    <value>Show Document Details</value>
+  </data>
+  <data name="btnClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="btnSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="btnDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="lblDept" xml:space="preserve">
+    <value>Department :</value>
+  </data>
+  <data name="lblDesig" xml:space="preserve">
+    <value>Designation :</value>
+  </data>
+  <data name="lblPhoneNo" xml:space="preserve">
+    <value>Phone No. :</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="rfvUserRole" xml:space="preserve">
+    <value>Please select an access level for the user.</value>
+  </data>
+  <data name="M00001" xml:space="preserve">
+    <value>Multiple active sessions not allowed, you have been logged out from all sessions. Kindly Login again to proceed.</value>
+  </data>
+  <data name="M00002" xml:space="preserve">
+    <value>User session logout successfully.</value>
+  </data>
+  <data name="M00003" xml:space="preserve">
+    <value>Please enter a valid Username.</value>
+  </data>
+  <data name="M00004" xml:space="preserve">
+    <value>Your new Password has been sent to your registered Email.</value>
+  </data>
+  <data name="M00005" xml:space="preserve">
+    <value>The password has been reset successfully and the user has been sent a temporary password.</value>
+  </data>
+  <data name="M00006" xml:space="preserve">
+    <value>Password not sent as the username is not recognised.</value>
+  </data>
+  <data name="M00007" xml:space="preserve">
+    <value>Changes have been applied successfully.</value>
+  </data>
+  <data name="M00008" xml:space="preserve">
+    <value>Unable to create account as the user already exists.</value>
+  </data>
+  <data name="M00009" xml:space="preserve">
+    <value>Unable to apply changes as the maximum number of Client Admin users has been reached.</value>
+  </data>
+  <data name="M00010" xml:space="preserve">
+    <value>Unable to apply changes as the maximum number of users has been reached.</value>
+  </data>
+  <data name="M00011" xml:space="preserve">
+    <value>Unable to apply changes as the email address is already in use.</value>
+  </data>
+  <data name="M00012" xml:space="preserve">
+    <value>Account unlocked successfully.</value>
+  </data>
+  <data name="M00013" xml:space="preserve">
+    <value>The old password you have entered is incorrect.</value>
+  </data>
+  <data name="M00014" xml:space="preserve">
+    <value>The password has successfully been changed.</value>
+  </data>
+  <data name="M00015" xml:space="preserve">
+    <value>The password must be at least 8 characters long.</value>
+  </data>
+  <data name="M00016" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;- The password must be at least 8 characters long &lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;-  The password must contain at least three of the following: &lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Upper case character&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Lower case character&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Numeric character&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;• Punctuation Character including these: ! @ # $ % ^ &amp; ( ) _ - ; ~</value>
+  </data>
+  <data name="M00017" xml:space="preserve">
+    <value>Please enter Username.</value>
+  </data>
+  <data name="M00018" xml:space="preserve">
+    <value>Please enter Password.</value>
+  </data>
+  <data name="M00019" xml:space="preserve">
+    <value>Password changed successfully, please login again.</value>
+  </data>
+  <data name="M00020" xml:space="preserve">
+    <value>Session closed due to login from another browser/system.</value>
+  </data>
+  <data name="M00021" xml:space="preserve">
+    <value>Username or Password is invalid.</value>
+  </data>
+  <data name="M00022" xml:space="preserve">
+    <value>Your password has now expired, please change your password.</value>
+  </data>
+  <data name="M00023" xml:space="preserve">
+    <value>Your account has been locked, please contact your administrator.</value>
+  </data>
+  <data name="M00024" xml:space="preserve">
+    <value>Your account has been made inactive, please contact your administrator.</value>
+  </data>
+  <data name="M00025" xml:space="preserve">
+    <value>Previous session closed. Please login again.</value>
+  </data>
+  <data name="M00026" xml:space="preserve">
+    <value>Invalid Username, account details not found.</value>
+  </data>
+  <data name="M00027" xml:space="preserve">
+    <value>Your account has been locked, please contact your administrator.</value>
+  </data>
+  <data name="M00028" xml:space="preserve">
+    <value>Your new password is too similar to your existing one. Please choose a new password.</value>
+  </data>
+  <data name="M00029" xml:space="preserve">
+    <value>A temporary password has been sent to your email address.</value>
+  </data>
+  <data name="M00030" xml:space="preserve">
+    <value>Unable to reset password.</value>
+  </data>
+  <data name="M00031" xml:space="preserve">
+    <value>Please change your password.</value>
+  </data>
+  <data name="M00032" xml:space="preserve">
+    <value>Please enter your old password.</value>
+  </data>
+  <data name="M00033" xml:space="preserve">
+    <value>Please enter a new password.</value>
+  </data>
+  <data name="M00034" xml:space="preserve">
+    <value>Special characters are not allowed.</value>
+  </data>
+  <data name="M00035" xml:space="preserve">
+    <value>Passwords do not match.</value>
+  </data>
+  <data name="M00036" xml:space="preserve">
+    <value>Please select a Product.</value>
+  </data>
+  <data name="M00037" xml:space="preserve">
+    <value>Please select a condition for the date you have entered.</value>
+  </data>
+  <data name="M00038" xml:space="preserve">
+    <value>Please enter a valid From date. It should be less than or equal to todays date.</value>
+  </data>
+  <data name="M00039" xml:space="preserve">
+    <value>Please enter a valid To date. It should be less than or equal to todays date.</value>
+  </data>
+  <data name="M00040" xml:space="preserve">
+    <value>Please enter both  From and To dates.</value>
+  </data>
+  <data name="M00041" xml:space="preserve">
+    <value>The To date must be greater than the From date.</value>
+  </data>
+  <data name="M00042" xml:space="preserve">
+    <value>Only one date should be entered.</value>
+  </data>
+  <data name="M00043" xml:space="preserve">
+    <value>Please select a condition for the page count you have entered.</value>
+  </data>
+  <data name="M00044" xml:space="preserve">
+    <value>Please enter both From and To page count.</value>
+  </data>
+  <data name="M00045" xml:space="preserve">
+    <value>The To page count must be greater than From page count.</value>
+  </data>
+  <data name="M00046" xml:space="preserve">
+    <value>Only one page count should be entered.</value>
+  </data>
+  <data name="M00047" xml:space="preserve">
+    <value>A wildcard symbol cannot be the first character of the field.</value>
+  </data>
+  <data name="M00048" xml:space="preserve">
+    <value>A sort field can only be selected once.</value>
+  </data>
+  <data name="M00049" xml:space="preserve">
+    <value>Please enter correct date.</value>
+  </data>
+  <data name="M00050" xml:space="preserve">
+    <value>Please enter a numeric value in the field \'{0}\'.</value>
+  </data>
+  <data name="M00051" xml:space="preserve">
+    <value>Please select at least one column to display Search List.</value>
+  </data>
+  <data name="M00052" xml:space="preserve">
+    <value>Please select the position order.</value>
+  </data>
+  <data name="M00053" xml:space="preserve">
+    <value>A position order can only be selected once.</value>
+  </data>
+  <data name="M00054" xml:space="preserve">
+    <value>Please select an access level for the user.</value>
+  </data>
+  <data name="M00055" xml:space="preserve">
+    <value>Please enter a Username.</value>
+  </data>
+  <data name="M00056" xml:space="preserve">
+    <value>Please enter the user's first name.</value>
+  </data>
+  <data name="M00057" xml:space="preserve">
+    <value>Please enter the user's last name.</value>
+  </data>
+  <data name="M00058" xml:space="preserve">
+    <value>The first name field contains invalid characters.</value>
+  </data>
+  <data name="M00059" xml:space="preserve">
+    <value>The last name field contains invalid characters.</value>
+  </data>
+  <data name="M00060" xml:space="preserve">
+    <value>A temporary password has been sent to the user.</value>
+  </data>
+  <data name="M00061" xml:space="preserve">
+    <value>User session logout successfully.</value>
+  </data>
+  <data name="M00062" xml:space="preserve">
+    <value>Please enter a Date.</value>
+  </data>
+  <data name="M00063" xml:space="preserve">
+    <value>Please enter To Date.</value>
+  </data>
+  <data name="M00064" xml:space="preserve">
+    <value>The To date must be greater than the From date.</value>
+  </data>
+  <data name="M00065" xml:space="preserve">
+    <value>Please enter a page count.</value>
+  </data>
+  <data name="M00066" xml:space="preserve">
+    <value>Please enter a To page count.</value>
+  </data>
+  <data name="M00067" xml:space="preserve">
+    <value>Please enter a valid To date.</value>
+  </data>
+  <data name="M00068" xml:space="preserve">
+    <value>No documents match your search criteria.</value>
+  </data>
+  <data name="M00069" xml:space="preserve">
+    <value>The results displayed have been limited as the returned list was too large. Please refine your search criteria.</value>
+  </data>
+  <data name="M00070" xml:space="preserve">
+    <value>User authenticated successfully.</value>
+  </data>
+  <data name="M00071" xml:space="preserve">
+    <value>Logged in User cannot change its own status.</value>
+  </data>
+  <data name="M00072" xml:space="preserve">
+    <value>Already logged out, cannot proceed.</value>
+  </data>
+  <data name="M00073" xml:space="preserve">
+    <value>User session recorded successfully.</value>
+  </data>
+  <data name="M00074" xml:space="preserve">
+    <value>Unable to apply changes as the maximum number of users has been reached.</value>
+  </data>
+  <data name="M00075" xml:space="preserve">
+    <value>Your session has been expired. Please login again.</value>
+  </data>
+  <data name="M00076" xml:space="preserve">
+    <value>Success.</value>
+  </data>
+  <data name="M00077" xml:space="preserve">
+    <value>Please re-type your password.</value>
+  </data>
+  <data name="M00078" xml:space="preserve">
+    <value>Please enter Alphanumeric characters without space in the Field \'{0}\'.</value>
+  </data>
+  <data name="M00079" xml:space="preserve">
+    <value>Please enter Alphanumeric characters  in the Field  \'{0}\'.</value>
+  </data>
+  <data name="M00080" xml:space="preserve">
+    <value>An error has occurred. Please contact your administrator.</value>
+  </data>
+  <data name="M00081" xml:space="preserve">
+    <value>Error occured during retrieval of the document: Kindly contact your Administrator.</value>
+  </data>
+  <data name="M00082" xml:space="preserve">
+    <value>Refresh only works once a search has been performed.</value>
+  </data>
+  <data name="M00083" xml:space="preserve">
+    <value>When using a wildcard as part of the search it must be the last character of the search data.</value>
+  </data>
+  <data name="M00084" xml:space="preserve">
+    <value>Due to incorrect login attempts by another user, this account has been locked and this session closed.</value>
+  </data>
+  <data name="MessageForActiveSuperUser" xml:space="preserve">
+    <value>Total Active Super User : 0</value>
+  </data>
+  <data name="MessageForActiveUser" xml:space="preserve">
+    <value>Total Active User : 0</value>
+  </data>
+  <data name="MessageForTentantUser" xml:space="preserve">
+    <value>Total Active {0} : {1}</value>
+  </data>
+  <data name="MessageForTentantUser0" xml:space="preserve">
+    <value>Total Active Client Admin : 0</value>
+  </data>
+</root>

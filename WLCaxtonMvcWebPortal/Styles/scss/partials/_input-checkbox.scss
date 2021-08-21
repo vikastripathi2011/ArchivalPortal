@@ -1,0 +1,183 @@
+/*Custom Checkbox CSS start*/
+
+.custom-checkbox {
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    @media (max-width: $tablet-width) {
+        @include space(margin, bottom, $extraMedium);
+        @include space(margin, top, $extraSmall)
+    }
+
+    @media (max-width: $mobile-width) {
+        @include space(margin, bottom, $medium);
+    }
+
+    input {
+        @include position-absolute();
+        opacity: 0;
+        cursor: pointer;
+
+        &:checked {
+            ~ .checkmark {
+                background-color: $default-btn-color;
+                @include border('top', 1px, solid, $default-btn-color);
+                @include border('bottom', 1px, solid, $default-btn-color);
+                @include border('left', 1px, solid, $default-btn-color);
+                @include border('right', 1px, solid, $default-btn-color);
+
+                &:after {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .checkmark {
+        @include position-absolute(-$extraSmall, auto, auto, 0);
+        height: $extraMedium;
+        width: $extraMedium;
+        @include border-radius(4);
+        background-color: $white;
+        @include border('top', 1px, solid, $border-color);
+        @include border('bottom', 1px, solid, $border-color);
+        @include border('left', 1px, solid, $border-color);
+        @include border('right', 1px, solid, $border-color);
+
+        &:after {
+            content: "";
+            @include position-absolute();
+            display: none;
+            left: 0.65rem;
+            top: 3px;
+            width: 0.5rem;
+            height: 1rem;
+            border: solid $white;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.custom-checkbox-all {
+    @include space(padding, left, $extraMedium);
+    @include space(margin, top, $extraSmall);
+    @include space(margin, bottom, $extraSmall);
+    .checkmark {
+        @include position-absolute(-2px, auto, auto, 0);
+        height: $small;
+        width: $small;
+
+        &:after {
+            left: 5px;
+            top: 1px;
+            width: 0.4375rem;
+            height: 0.75rem;
+        }
+    } 
+}
+
+/*Custom Checkbox CSS End*/
+
+/*Custom Radio CSS start*/
+
+.custom-radio {
+    position: relative;
+    cursor: pointer;
+    @include space(padding, top, $rem-pad);
+    @include space(padding, left, $large);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: $global-font-semibold;
+
+    @media (max-width: $tablet-width) {
+        @include space(margin, bottom, $rem2-pad);
+    }
+
+    input {
+        @include position-absolute();
+        opacity: 0;
+        cursor: pointer;
+
+        &:checked {
+            ~ .checkmark {
+                background-color: $radio-btn;
+                @include border('top', 1px, solid, $radio-btn);
+                @include border('bottom', 1px, solid, $radio-btn);
+                @include border('left', 1px, solid, $radio-btn);
+                @include border('right', 1px, solid, $radio-btn);
+
+                &:after {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .checkmark {
+        @include position-absolute(0.5rem, auto, auto, 0);
+        height: $rem2-pad;
+        width: $rem2-pad;
+        background-color: $radio-btn;
+        @include border-radius(50);
+        @include border('top', 1px, solid, $border-color);
+        @include border('bottom', 1px, solid, $border-color);
+        @include border('left', 1px, solid, $border-color);
+        @include border('right', 1px, solid, $border-color);
+
+        &:after {
+            content: "";
+            @include position-absolute();
+            display: none;
+            left: 5px;
+            top: 5px;
+            width: $input-padding;
+            height: $input-padding;
+            background-color: $border-hover;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            @include border-radius(50);
+        }
+    }
+}
+
+/*Custom Radio CSS End*/
+
+
+/*Custom file CSS Start*/
+
+.custom-file-input {
+    color: transparent;
+    @include space(margin, bottom, $extraMedium);
+
+    &::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+
+    &::before {
+        content: 'Choose files';
+        color: $white;
+        display: inline-block;
+        background-color: $default-btn-color;
+        @include font-size(16);
+        @include space(padding, all, $input-padding);
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        @include border-radius(4);
+    }
+}
+
+
+
+/*Custom file CSS End*/

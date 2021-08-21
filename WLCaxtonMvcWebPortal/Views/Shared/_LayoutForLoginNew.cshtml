@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Archive Portal";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />*@
+    <title>.::@ViewBag.Title - Back Office System::.</title>
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render(Url.Content("~/Styles/css/main.css"))
+
+    @Scripts.Render(Url.Content("~/Styles/js/jquery-3.3.1.min.js"))
+    @*@Scripts.Render(Url.Content("~/Scripts/UserJs/Common.js"))*@
+  
+    @Scripts.Render(Url.Content("~/Styles/js/sign_of.min.js"))
+    @Scripts.Render(Url.Content("~/Styles/js/custom.js"))
+
+    @Scripts.Render(Url.Content("~/Scripts/alertify.js-0.3.10/lib/alertify.min.js"))
+
+    @Styles.Render(Url.Content("~/Scripts/alertify.js-0.3.10/themes/alertify.core.css"))
+     @Styles.Render(Url.Content("~/Scripts/alertify.js-0.3.10/themes/alertify.default.css"))
+    <!-- include boostrap theme  -->
+    @Styles.Render(Url.Content("~/Scripts/alertify.js-0.3.10/themes/alertify.bootstrap.css"))
+    <!-- END Css-->
+    @{
+        var dateT = Convert.ToString(DateTime.Now.Ticks);
+        @Scripts.Render(Url.Content("~/Scripts/UserJs/LoginDetails.js?" + dateT))
+    }
+
+</head>
+<noscript>
+    For full functionality of this site it is necessary to enable JavaScript.
+    Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+        instructions how to enable JavaScript in your web browser
+    </a>.
+</noscript> 
+<body>
+    <div class="loaderBg" style="width: 100%; height: 100%; display: none; background: url(@Url.Content("~/Images/transparent.png")) repeat;
+        position: fixed; z-index: 99999; margin: -100px 0px 0px 0px">
+        <div class="loader">
+            <img src="@Url.Content("~/Images/loader.gif")" width="100px" id="img" style="display: block; margin: 0 auto;
+                margin-top: 20%;" alt="" />
+        </div>
+    </div>
+
+
+    <header>
+        <div class="container">
+            <div class="header">
+                <input type="hidden" id="hdnIP" value=@System.Configuration.ConfigurationManager.AppSettings["siteroot"] />
+                <a href="UserLogin"><img src="@Url.Content("~/Styles/images/logo.png")" alt="Logo"></a>
+                <ul class="header__top-nav">
+                    <li class="header__top-nav--mobile-nav">
+                        <a href="#">Nav</a>
+                    </li>
+                    <li class="header__top-nav--sign">
+                        <a href="LogOff">Sign in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Header Html End -->
+
+    <!-- Simple Form Html Start -->
+    
+            @RenderSection("featured", required: false)
+            @RenderBody()
+    
+    <!-- Simple Form Html End -->
+    <!-- Footer Html Start -->
+    <footer>
+        <div class="container">
+            <p>&copy; Copyright Williams Lea Tag. All Rights Reserved.</p>
+             
+        </div>
+    </footer>
+    <!-- Footer Html End -->
+
+
+</body>
+</html>
+<script type="text/javascript">
+    //global varriable for dyanamic  path
+    var rootDir = "@Url.Content("~/")";
+
+</script>

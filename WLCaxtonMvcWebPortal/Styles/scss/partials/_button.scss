@@ -1,0 +1,82 @@
+@mixin custom-btn {
+	color: $white;
+	background: $default-btn-color;
+	text-transform: uppercase;
+	@include font-size(16);
+	@include space(padding, top, $input-padding);
+	@include space(padding, bottom, $input-padding);
+	@include space(padding, left, $rem-pad);
+	@include space(padding, right, $rem-pad);
+	@include border('top', 0px);
+	@include border('bottom', 0px);
+	@include border('left', 0px);
+	@include border('right', 0px);
+	@include border-radius(4);
+	outline: 0;
+
+	@media (max-width: $mobile-width) {
+		@include font-size(14);
+	}
+}
+
+.login-btn {
+	@include custom-btn;
+	width: $x4-width;
+	background: $btnBlue;
+	@include center-block;
+	text-transform: none;
+	@include font-size(21);
+	@include border-radius(5);
+	@include space(margin, top, $DexktopLagre);
+	@include background('../images/sprite.png', 21% -0.5%);
+
+	@media (max-width: $mobile-width) {
+		@include space(margin, top, $extraMedium);
+		width: $x3-width;
+		@include background('../images/sprite.png', 12% -0.3%);
+	}
+
+}
+
+.forget-btn {
+	background: none;
+	@include border('top', 0px);
+	@include border('bottom', 1px, solid, $darkBlue);
+	@include border('left', 0px);
+	@include border('right', 0px);
+	@include font-size(16);
+	color: $darkBlue;
+	outline: 0;
+	display: inline-block;
+	text-decoration: none !important;
+}
+
+.btn-bottom-margin {
+	@include space(margin, bottom, $small);
+
+	@media (max-width: $tablet-width) {
+		@include space(margin, left, $rem-pad);
+	}
+}
+
+.default-btn {
+	@include custom-btn;
+}
+
+.account-btn {
+	@include font-size(14);
+	@include space(padding, left, $extraSmall);
+	@include space(padding, right, $extraSmall);
+}
+
+.scv-button {
+	@include space(margin, left, $rem-pad);
+	@include space(margin, bottom, $small);
+	display: inline-block;
+	color: $white !important;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+	@include font-size(14);
+	padding-top: 15px !important;
+}

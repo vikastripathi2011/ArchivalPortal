@@ -1,0 +1,25 @@
+﻿@model WLCaxtonPortalBusinessEntity.User
+@{
+    ViewBag.Title = "CreateUser";
+}
+@Scripts.Render(Url.Content("~/Scripts/Areajs/UserMaintenance.js"))
+<div class="contHead">
+    User Creation Form
+</div>
+@*@using (Html.BeginForm("CreateUser", "UserMntnanc", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();*@
+    <div class="contBox clear">
+
+        <div id="dvUserDetails">
+            @Html.Partial("_UserRegistration")
+        </div>
+        
+    </div>
+
+@*}*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        menuActive("User Maintenance", "Create User");
+    });
+</script>

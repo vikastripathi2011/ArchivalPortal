@@ -1,0 +1,119 @@
+.middle-part {
+	&__left-nav {
+		position: fixed;
+		width: 14.375rem;
+		min-height: calc(100% - 7.9rem);
+		background-color: $border-color;
+		z-index: 9;
+		@include border('right', 1px, solid, $border-color);
+		@media (max-width: $mobile-width) {
+			width: 0;
+			transition: 0.3s;
+			overflow-x: hidden;
+			background-color: $heading-blue;
+			@include border('top', 1px, solid, $border-color);
+			@include border('right', 1px, solid, $border-color);
+			@include position-absolute();
+		}
+
+		.panel-group {
+			@include space(padding, top, $medium);
+			@include border('bottom', 1px, solid, $border-color);
+
+			@media (max-width: $mobile-width) {
+				@include space(padding, top, 0);
+				max-height: $x6-width;
+				overflow-y: auto;
+				overflow-x: hidden;
+				@include space(margin, bottom, 0);
+			}
+
+			@media (max-width: 567px) {
+				max-height: none;
+			}
+
+			.panel {
+				@include border-radius(0);
+				@include border('left', 0);
+				@include border('right', 0);
+				@include border('bottom', 0);
+				@include box-shadow(0, 0, 0, 0, $white);
+
+				+ .panel {
+					@include space(margin, top, 0);
+				}
+				.panel-heading {
+					background-color: transparent;
+					@include space(padding, all, 0);
+					
+					a {
+						display: block;
+						text-decoration: none;
+						font-family: $global-font-semibold;
+						color: $nav-color;
+						@include space(padding, top, $rem-pad);
+						@include space(padding, bottom, $rem-pad);
+						@include space(padding, left, $extraSmall);
+						@include space(padding, right, $extraSmall);
+						@include background('../images/sprite.png', 102% 70.6%);
+						background-color: $even-row;
+
+						&.collapsed {
+							@include background('../images/sprite.png', 102% 60.6%);
+							background-color: $white;
+						}
+						
+					}
+					
+				}
+				.panel-collapse {
+					.panel-body {
+						@include border('top', 0);
+						@include space(padding, all, 0);
+						@include space(padding, top, $extraSmall);
+						background-color: $even-row;
+						a {
+							display: block;
+							text-decoration: none;
+							font-family: $global-font-semibold;
+							@include font-size(13);
+							@include space(padding, left, $rem-pad);
+							@include space(padding, bottom, $rem-pad);
+							color: $nav-child-color;
+
+							&:hover {
+								color: $heading-blue;
+							}
+
+							&:focus {
+								color: $heading-blue;
+							}
+
+							&.active {
+								color: $heading-blue;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Js Class
+.goTop {
+	top: 0rem;
+}
+
+.mobile-nav-close {
+	text-align: right;
+	@include space(padding, all, $rem-pad);
+	text-indent: 999rem;
+	text-decoration: none !important;
+	@include background('../images/sprite.png', 101% 44.3%);
+	display: none;
+
+	@media (max-width: $mobile-width) {
+		display: block;
+	}
+}

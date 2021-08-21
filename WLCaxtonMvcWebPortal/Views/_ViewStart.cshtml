@@ -1,0 +1,25 @@
+﻿@{
+    var controlerName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+    var actionName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["action"]);
+    string _ChkUser = string.Empty;
+    if (controlerName == "Login" && actionName != "UserLogin")
+    {
+
+        if (Convert.ToString(WLCaxtonMvcWebPortal.Util.SessionClass.loggedUser.LoginDetails) != "")
+        {
+            Layout = "~/Views/Shared/_LayoutForAllnew.cshtml";
+
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutForLoginNew.cshtml";
+        }
+    }
+
+    else
+    {
+        //Layout = "~/Views/Shared/_LayoutForLoginNew.cshtml";
+        //Call Login page..
+    }
+
+}

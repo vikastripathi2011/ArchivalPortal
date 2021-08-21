@@ -1,0 +1,73 @@
+html, body {
+	height: $full;
+	background-color: $white;
+}
+
+h1 {
+	@include font-size(22);
+	@include line-height(28);
+	color: $blue;
+	@include space(padding, bottom, $small);
+}
+
+h2 {
+	color: $blue;
+	@include space(padding, bottom, $small);
+	@include font-size(22);
+	@include line-height(30);
+	text-transform: uppercase;
+	font-family: $global-font-bold;
+}
+
+h3 {
+	@include font-size(18);
+	@include line-height(22);
+	color: $white;
+
+	@media (max-width: $mobile-width) {
+		@include font-size(16);
+		@include line-height(20);
+	}
+}
+
+h3 {
+	&.form-heading {
+		color: $detail-heading;
+		font-family: $global-font-semibold;
+		@include font-size(22);
+		@include line-height(26);
+		@include space(margin, bottom, $small);
+	}
+}
+
+h4 {
+	@include font-size(14);
+	@include line-height(18);
+}
+
+h5 {
+	
+}
+
+h6 {
+	
+}
+
+p {
+	@include font-size(14);
+	@include line-height(16);
+}
+
+.container {
+    max-width: $container-width;
+    width: $full !important;
+    @include space(padding, all, 0);
+}
+
+.container-fluid {
+	@include space(padding, all, 0);
+}
+
+img {
+	max-width: 100%;
+}

@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "UserLogin";
+    var lblmsg = ViewBag.lblMessage;
+}
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />*@
+    <title>.::@ViewBag.Title - Back Office System::.</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @****************************** All Script file *********************************************************@
+
+    @Styles.Render(Url.Content("~/Styles/css/main.css"))
+
+    @Scripts.Render(Url.Content("~/Styles/js/jquery-3.3.1.min.js"))
+    @*@Scripts.Render(Url.Content("~/Scripts/UserJs/Common.js"))*@
+
+
+    @Scripts.Render(Url.Content("~/Scripts/alertify.js-0.3.10/lib/alertify.min.js"))
+
+    @Styles.Render(Url.Content("~/Scripts/alertify.js-0.3.10/themes/alertify.core.css"))
+    @Styles.Render(Url.Content("~/Scripts/alertify.js-0.3.10/themes/alertify.default.css"))
+    <!-- include boostrap theme  -->
+    @Styles.Render(Url.Content("~/Scripts/alertify.js-0.3.10/themes/alertify.bootstrap.css"))
+    <!-- END Css-->
+    @{
+        var dateT = Convert.ToString(DateTime.Now.Ticks);
+        @Scripts.Render(Url.Content("~/Scripts/UserJs/LoginDetails.js?" + dateT))
+    }
+
+</head>
+
+
+@*<script type="text/javascript">
+
+      //    if ($.support.msie && parseInt($.support.version, 10) === 8 || $.support.msie && parseInt($.support.version, 10) === 7) {
+      if ($.browser.msie && parseInt($.browser.version, 10) === 8 || $.browser.msie && parseInt($.browser.version, 10) === 7) {
+
+          alertify.alert("<b>Warnning...! <br> <br></b>" + "We do not support to lower than IE9 browser. Please click <a href=\"http://www.microsoft.com/windows/downloads/ie/getitnow.mspx\"><b><i><span style='color:blue; '>here</span></i></b></a> to upgrade your current browser.");
+      }
+      else {
+          // alertify.alert("<b>Message...! <br> <br></b>" + "<b>Thank You for not running lower than IE8 browser.</b>");
+      }
+    </script>*@
+
+@*New Design*@
+<body>
+
+    <div class="loaderBg" style="width: 100%; height: 100%; display: none; background: url(@Url.Content("~/Images/transparent.png")) repeat;
+        position: fixed; z-index: 99999; /*margin: -100px 0px 0px 0px*/">
+        <div class="loader" style="position: absolute; top: 40%; left: 0; right: 0; text-align: center;">
+            <img src="@Url.Content("~/Images/loader.gif")" width="100px" id="img" />
+        </div>
+    </div>
+
+    <section class="loginSection container-fluid">
+        <div class="loginSection__leftPart" style="background-image: url(@Url.Content("~/Styles/images/signIn_bg.jpg")">
+            <div class="loginSection__leftPart--content">
+                <div class="loginSection__leftPart--content-details">
+                    <img src="@Url.Content("~/Styles/images/logo.png")" alt="Logo">
+                    <h1>Archive Portal (Caxton)</h1>
+                    @*<h2>create seamless customer experiences.</h2>
+                    <h3>We provide marketing and communications services</h3>*@
+                </div>
+            </div>
+        </div>
+        <div class="loginSection__rightPart">
+            <div class="loginSection__rightPart--content">
+                <div class="loginSection__rightPart--content-details">
+                    <h2>User Login Here</h2>
+                    <form class="login-form">
+                        <div class="login-form__form-group">
+                            <input type="text" placeholder="User ID" class="form-control usernm" name="txtUserName" id="txtUserName" maxlength="50" />
+                            <label id="lblLoginError" class="simple-form__form-group--label simple-form__form-group--labelError"></label>
+                        </div>
+                        <div class="login-form__form-group">
+                            <input type="password" placeholder="Password" class="form-control passwd" name="txtPassword" id="txtPassword" maxlength="15"  />
+                            <label id="lblPassError" class="simple-form__form-group--label simple-form__form-group--labelError"></label>
+                        </div>
+                        <label id="lblGlobalErrMsg" class="simple-form__form-group--label simple-form__form-group--labelError"> @ViewBag.lblMessage</label>
+                       
+                        @* Removed the link of forget password ifin future want forgot pass function just uncomment below code*@
+                        
+                        @*<div class="login-form__form-group">
+                            Forgot Password?
+                            @Html.ActionLink("Click here to reset", "ForgotPassword", "Login", new { @style = "color:#0b6ea5", @class = "forget-btn" })
+                        </div>*@
+                        <div class="login-form__form-group">
+                            <button id="aSaveLogin" name="aSaveLogin" type="button" class="login-btn">Login</button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<footer>
+        <div class="container">
+            <p>&copy; Copyright Williams Lea Tag. All Rights Reserved.</p>
+        </div>
+        
+    </footer>
+    @Scripts.Render(Url.Content("~/Styles/js/sign_of.min.js"))
+    @Scripts.Render(Url.Content("~/Styles/js/custom.js"))
+</body>
+</html>
+
+<script type="text/javascript">
+    //global varriable for dyanamic  path
+    var rootDir = "@Url.Content("~/")";
+
+</script>

@@ -1,0 +1,185 @@
+.simple-form {
+	@include space(padding, top, $small);
+	@include space(padding, bottom, $small);
+	min-height: calc(100% - 13.6875rem);
+	@include space(padding, left, $rem-pad);
+	@include space(padding, right, $rem-pad);
+
+	&__normaltext {
+		@include font-size(16);
+		@include line-height(23);
+		color: $help-blue;
+		@include space(margin, bottom, $small);
+
+		a {
+			font-family: $global-font-semibold;
+			text-decoration: underline;
+		}
+	}
+
+	&__errortext {
+		@extend .simple-form__normaltext;
+		color: $error-red;
+	}
+
+	&__tooltip-btn {
+		text-indent: -99999rem;
+		@include border(top, 0);
+		@include border(bottom, 0);
+		@include border(left, 0);
+		@include border(right, 0);
+		background-color: transparent;
+		height: $rem2-pad;
+		width: $medium;
+		@include space('padding', all, 0);
+		display: block;
+		margin: 0 auto;
+
+		&--reset {
+			@include background('../images/sprite2.png', -1.3125rem -20.1875rem);
+		}
+
+		&--edit {
+			@include background('../images/sprite2.png', -1.3125rem -26.75rem);
+		}
+	}
+
+	&__form-group {
+		@include space(margin, bottom, $medium);
+		position: relative;
+
+		@media (max-width: $desk-width) {
+			@include space(margin, bottom, 0);
+		}
+
+		&--label {
+			font-family: $global-font-semibold;
+			display: block;
+			@include font-size(16);
+			@include line-height(23);
+			@include space(margin, bottom, $extraSmall);
+
+			span {
+				color: $star-red;
+				@include font-size(22);
+			}
+		}
+
+		&--labelError {
+			color: $error-red;
+			font-family: $global-font;
+			@include font-size(14);
+		}
+
+		&--input {
+			display: block;
+			@include space(padding, all, $input-padding);
+			@include border-radius(4);
+			@include font-size(14);
+			height: $medium;
+			//max-width: $x9-width;
+			width: $full;
+			@include border('left', 1px, solid, $border-color);
+			@include border('right', 1px, solid, $border-color);
+			@include border('top', 1px, solid, $border-color);
+			@include border('bottom', 1px, solid, $border-color);
+
+			&.datetimepicker {
+				@include background('../images/sprite2.png', 100% -7.3rem);
+				cursor: pointer;
+				background-size: 2.8125rem;
+
+				@media (max-width: $tablet-width) {
+					//@include background('../images/sprite2.png', 100% -11.8rem);
+				}
+			}
+
+			&:hover {
+				@include border('left', 1px, solid, $border-hover);
+				@include border('right', 1px, solid, $border-hover);
+				@include border('top', 1px, solid, $border-hover);
+				@include border('bottom', 1px, solid, $border-hover);
+				transition: all 0.2s ease-in-out;
+			}
+
+			@media (max-width: $desk-width) {
+				@include space(margin, bottom, $rem2-pad);
+			}
+		}
+
+		&--inputError {
+			//@include border('left', 1px, solid, $error-red);
+			//@include border('right', 1px, solid, $error-red);
+			//@include border('top', 1px, solid, $error-red);
+			//@include border('bottom', 1px, solid, $error-red);
+			border: 1px solid $error-red !important;
+			margin-bottom: 5px !important;
+		}
+
+		span {
+			&.edit-icon {
+				@include position-absolute(2.875rem, -1.25rem);
+				height: $rem2-pad;
+				width: $rem2-pad;
+				@include background('../images/sprite.png', -.7rem -68.5rem);
+				text-indent: -999rem;
+				cursor: pointer;
+
+				@media (max-width: $mobile-width) {
+					@include position-absolute(0, $rem-pad);
+				}
+			}
+		}
+
+		input[type="checkbox"] {
+			@include space(margin, top, $x1-width);
+
+			@media (max-width: $mobile-width) {
+				@include space(margin, top, 0);
+				@include space(margin, bottom, $rem2-pad);
+			}
+		}
+
+	}
+
+	.default-btn {
+		@include space(margin, bottom, $small);
+	}
+
+	.table-btn {
+		@include custom-btn;
+		@include font-size(12);
+		@include space(padding, all, 5px);
+		text-transform: none;
+	}
+
+	.add-btn {
+		@include custom-btn;
+		@include font-size(15);
+		@include space(padding, all, $extraSmall);
+		float: right;
+		@include space(margin, top, $x1-width);
+		@include space(margin, left, 5px);
+
+		@media (max-width: $mobile-width) {
+			@include space(margin, top, 0);
+		}
+	}
+
+	ol {
+		@include space(padding, left, $rem-pad);
+		@include space(padding, top, $rem-pad);
+
+		li {
+			@include space(margin, bottom, 5px);
+		}
+	}
+}
+
+input[type="checkbox"] {
+	@include space(margin, right, 0.4375rem);
+}
+
+input[disabled] {
+	cursor: not-allowed !important;
+}

@@ -1,0 +1,131 @@
+.print-container {
+	ul {
+	    text-align: right;
+		li {
+			display: inline-block;
+			a {
+				height: $rem2-pad;
+				width: $rem2-pad;
+				text-indent: -9999rem;
+				display: block;
+
+				&.print01 {
+					@include background('../images/sprite2.png', -1.4rem -53.7rem);
+				}
+				&.print02 {
+					@include background('../images/sprite2.png', -1.3rem -60.5rem);
+				}
+				&.print03 {
+					@include background('../images/sprite2.png', -1.2rem -66.9rem);
+				} 
+			}
+		}
+	}
+}
+
+.print-table {
+	width: $full;
+	@include space(margin, bottom, $extraMedium);
+
+	thead {
+		tr {
+			td {
+				@include space (padding, top, $extraSmall);
+				@include space (padding, bottom, $extraSmall);
+				@include space (padding, left, $small);
+				@include space (padding, right, $small);
+				background-color: $print-table-head;
+				@include font-size(16);
+				vertical-align: middle;
+
+				a {
+					&.pdf-icon {
+						height: $rem2-pad;
+						width: $rem2-pad;
+						display: inline-block;
+						text-indent: -99999rem;
+						@include background('../images/sprite2.png', -1.5rem -46.8rem);
+					}
+
+					~ span {
+						position: relative;
+						top: 5px;
+					}
+				}
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			color: $table-color;
+
+			&:nth-child(odd) {
+				background-color: $odd-row;
+			}
+			&:nth-child(even) {
+				background-color: $even-row;
+			}
+
+			td {
+				@include space (padding, top, $extraSmall);
+				@include space (padding, bottom, $extraSmall);
+				@include space (padding, left, $small);
+				@include space (padding, right, $small);
+				@include font-size(13);
+				@include border('bottom', 1px, solid, $border-color);
+				vertical-align: middle;
+
+				a {
+					&.pdf-icon {
+						height: $rem2-pad;
+						width: $rem2-pad;
+						display: inline-block;
+						text-indent: -99999rem;
+						@include background('../images/sprite2.png', -1.5rem -46.8rem);
+					}
+
+					~ span {
+						position: relative;
+						top: 8px;
+					}
+				}
+			}
+
+		}
+	}
+}
+
+.print-page-container {
+	max-width: 45.9375rem;
+	margin: 0 auto;
+
+	header {
+		@include space(padding, all, $rem-pad);
+
+		img {
+			width: auto !important;
+			@include space(padding, left, 0);
+			@include space(padding, right, 0);
+		}
+	}
+
+	.print-heading {
+		@include space(padding, top, $medium);
+		@include space(margin, left, $rem-pad);
+		@include space(margin, right, $rem-pad);
+		@include border('bottom', 2px, solid, $border-color);
+		position: relative;
+
+		span {
+			&.print-icon {
+				@include background('../images/sprite2.png', -0.8rem -73.5rem);
+				height: $medium;
+				width: $medium;
+				@include position-absolute(auto, 0, $small,);
+				text-indent: -99999rem;
+				cursor: pointer;
+			}
+		}
+	}
+}
